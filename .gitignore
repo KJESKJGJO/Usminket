@@ -1,0 +1,24 @@
+# Vercel
+.vercel
+
+# Node
+node_modules/
+.env
+.env.local
+.env*.local
+*.log
+npm-debug.log*
+
+# Editors
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+build/
+.next/
+.turbo/
+__pycache__/

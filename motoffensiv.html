@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Motoffensiv — internt · Usminket politikk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <style>
+    /* Motoffensiv-spesifikk styling — bygger på style.css */
+    .mo-header {
+      padding: var(--space-8) 0 var(--space-6);
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .mo-badge {
+      display: inline-block;
+      padding: 4px var(--space-3);
+      background: var(--red);
+      color: var(--white);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-radius: 2px;
+      margin-bottom: var(--space-4);
+    }
+    .mo-meta {
+      color: var(--muted);
+      font-size: var(--text-sm);
+      margin-top: var(--space-3);
+      font-family: var(--font-sans);
+    }
+    .mo-auth {
+      padding: var(--space-8);
+      max-width: 480px;
+      margin: 5rem auto;
+      background: var(--ink-3);
+      border: 1px solid var(--line-soft);
+      border-radius: 4px;
+      text-align: center;
+    }
+    .mo-auth input {
+      width: 100%;
+      padding: var(--space-3) var(--space-4);
+      background: var(--ink);
+      border: 1px solid var(--line-soft);
+      border-radius: 3px;
+      color: var(--white);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      margin: var(--space-4) 0;
+    }
+    .mo-auth button {
+      padding: var(--space-3) var(--space-6);
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      border-radius: 3px;
+      font-family: var(--font-sans);
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+    }
+    .mo-auth button:hover { background: #A62520; }
+
+    .mo-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin: var(--space-6) 0;
+    }
+    .mo-filter {
+      padding: 6px var(--space-3);
+      background: var(--ink-3);
+      border: 1px solid var(--line-soft);
+      color: var(--muted);
+      border-radius: 20px;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-transform: capitalize;
+      transition: all 0.2s ease;
+    }
+    .mo-filter:hover, .mo-filter.is-active {
+      border-color: var(--red);
+      color: var(--white);
+      background: rgba(199, 48, 43, 0.15);
+    }
+
+    .mo-item {
+      padding: var(--space-6);
+      background: var(--ink-3);
+      border: 1px solid var(--line-soft);
+      border-radius: 4px;
+      margin-bottom: var(--space-6);
+    }
+    .mo-item__header {
+      display: flex;
+      gap: var(--space-3);
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: var(--space-3);
+    }
+    .mo-item__tema {
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      color: var(--red);
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px var(--space-2);
+      border: 1px solid var(--red);
+      border-radius: 2px;
+    }
+    .mo-item__date {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-family: var(--font-sans);
+    }
+    .mo-item__kilde {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-family: var(--font-sans);
+      font-style: italic;
+    }
+    .mo-item__title {
+      font-family: var(--font-serif);
+      font-size: var(--text-xl);
+      line-height: 1.25;
+      margin: 0 0 var(--space-3) 0;
+      color: var(--white);
+    }
+    .mo-item__title a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    .mo-item__title a:hover {
+      border-bottom-color: var(--red);
+      color: var(--red);
+    }
+    .mo-item__summary {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 0 0 var(--space-5) 0;
+    }
+    .mo-section {
+      margin-top: var(--space-5);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--line-soft);
+    }
+    .mo-section__label {
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      color: var(--red);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: var(--space-3);
+    }
+    .mo-vinkling {
+      margin-bottom: var(--space-4);
+      padding-left: var(--space-4);
+      border-left: 2px solid var(--red);
+    }
+    .mo-vinkling__title {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--white);
+      margin: 0 0 var(--space-2) 0;
+    }
+    .mo-vinkling__arg {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 0 0 var(--space-2) 0;
+    }
+    .mo-vinkling__formidler {
+      font-size: 0.8rem;
+      color: var(--white);
+      font-family: var(--font-sans);
+      margin: 0 0 var(--space-2) 0;
+    }
+    .mo-vinkling__kilde {
+      font-size: 0.78rem;
+    }
+    .mo-vinkling__kilde a {
+      color: var(--red);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    .mo-vinkling__kilde a:hover { border-bottom-color: var(--red); }
+
+    .mo-utredninger {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-3);
+    }
+    .mo-utr-item {
+      padding: var(--space-3);
+      background: var(--ink);
+      border: 1px solid var(--line-soft);
+      border-radius: 3px;
+      font-size: 0.85rem;
+    }
+    .mo-utr-item__type {
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      color: var(--red);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .mo-utr-item__title a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .mo-utr-item__title a:hover { color: var(--red); }
+
+    .mo-loading, .mo-empty {
+      padding: var(--space-8);
+      text-align: center;
+      color: var(--muted);
+      font-family: var(--font-sans);
+    }
+
+    .mo-warn {
+      padding: var(--space-4);
+      background: rgba(199, 48, 43, 0.08);
+      border-left: 3px solid var(--red);
+      margin: var(--space-5) 0;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .mo-warn strong { color: var(--white); }
+
+    .mo-program {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--line-soft);
+      border-radius: 3px;
+      padding: var(--space-3) var(--space-4);
+      margin-top: var(--space-3);
+      font-size: 0.85rem;
+    }
+    .mo-program__punkt {
+      padding: var(--space-2) 0;
+      border-bottom: 1px dashed var(--line-soft);
+      color: var(--white);
+      line-height: 1.5;
+    }
+    .mo-program__punkt:last-child { border-bottom: none; }
+    .mo-program__tema {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      color: var(--red);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-right: var(--space-2);
+    }
+    .mo-program__kilde {
+      display: block;
+      color: var(--muted);
+      font-size: 0.75rem;
+      margin-top: 4px;
+    }
+    .mo-program__kilde a {
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    .mo-program__kilde a:hover { border-bottom-color: var(--red); color: var(--red); }
+
+    .mo-item--stortinget {
+      border-left: 3px solid #4a5568;
+      padding-left: var(--space-4);
+    }
+    .mo-item--stortinget .mo-item__kilde { color: #7a97c9; }
+
+    .mo-kildetype {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      margin-right: var(--space-2);
+    }
+    .mo-kildetype--nyhet { background: var(--red); color: var(--white); }
+    .mo-kildetype--stortinget { background: #2c3e5a; color: var(--white); }
+
+    .mo-subheader {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      color: var(--white);
+      margin: var(--space-6) 0 var(--space-4) 0;
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .mo-subheader__meta {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 6px;
+      font-weight: normal;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script>
+  (function () {
+    const app = document.getElementById('app');
+
+    // Hent token fra URL eller localStorage
+    const params = new URLSearchParams(location.search);
+    let token = params.get('key') || localStorage.getItem('mo_token') || '';
+
+    if (!token) {
+      renderAuth();
+    } else {
+      renderData(token);
+    }
+
+    function renderAuth() {
+      app.innerHTML = `
+        <div class="mo-auth">
+          <div class="mo-badge">Internt · Fortrolig</div>
+          <h1 style="font-family: var(--font-serif); margin-bottom: var(--space-3);">Motoffensiv</h1>
+          <p style="color: var(--muted); font-size: 0.9rem;">Denne siden krever tilgangsnøkkel.</p>
+          <input type="password" id="tok" placeholder="Tilgangsnøkkel" autofocus />
+          <button onclick="location.search='?key='+encodeURIComponent(document.getElementById('tok').value)">Åpne</button>
+        </div>
+      `;
+    }
+
+    function fmtDate(raw) {
+      if (!raw) return '';
+      const d = new Date(raw);
+      if (isNaN(d)) return raw;
+      const months = ['jan','feb','mar','apr','mai','jun','jul','aug','sep','okt','nov','des'];
+      return `${d.getDate()}. ${months[d.getMonth()]} ${d.getFullYear()}`;
+    }
+
+    function shortUrl(u) {
+      try {
+        const p = new URL(u);
+        const host = p.hostname.replace(/^www\./, '');
+        const path = p.pathname.length > 40 ? p.pathname.slice(0, 40) + '…' : p.pathname;
+        return host + path;
+      } catch { return String(u || '').slice(0, 60); }
+    }
+
+    function escapeHtml(s) {
+      return String(s || '')
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+        .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    }
+
+    async function renderData(tok, filterTema) {
+      // Lagre token for neste besøk
+      localStorage.setItem('mo_token', tok);
+
+      const url = filterTema
+        ? `/api/motoffensiv?key=${encodeURIComponent(tok)}&tema=${filterTema}&limit=40`
+        : `/api/motoffensiv?key=${encodeURIComponent(tok)}&limit=40`;
+
+      app.innerHTML = `<div class="mo-loading">Henter siste Frp-utspill …</div>`;
+
+      let data;
+      try {
+        const r = await fetch(url, { cache: 'no-store' });
+        if (r.status === 401) {
+          localStorage.removeItem('mo_token');
+          renderAuth();
+          return;
+        }
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        data = await r.json();
+      } catch (e) {
+        app.innerHTML = `<div class="mo-loading">Kunne ikke hente data: ${escapeHtml(e.message)}</div>`;
+        return;
+      }
+
+      const temaer = ['skatt','velferd','arbeidsliv','klima','innvandring','justis','distrikt','samferdsel','budsjett'];
+
+      const html = [];
+      html.push(`
+        <div class="section">
+          <div class="wrap">
+            <div class="mo-header">
+              <div class="mo-badge">Internt · Fortrolig · Ikke publiser</div>
+              <h1 style="font-family: var(--font-serif); font-size: var(--text-hero); margin: 0;">Motoffensiv</h1>
+              <p class="mo-meta">
+                Ferske Frp-utspill klassifisert på tema, med kilder og motargument-utkast.
+                Data hentet ${escapeHtml(new Date(data.fetchedAt).toLocaleString('nb-NO'))} — ${data.count} saker.
+              </p>
+              <div class="mo-warn">
+                <strong>Bruk:</strong> Alt materiale her er utkast og forslag basert på offentlig tilgjengelig informasjon fra Frp og norske medier. Ingenting publiseres automatisk. Enhver formidling må godkjennes av rådgiver og tilpasses den faktiske situasjonen. Fagpersoner opptrer i sin faglige rolle, ikke som partipolitikere.
+              </div>
+
+              <div class="mo-filters">
+                <button class="mo-filter ${!filterTema ? 'is-active' : ''}" onclick="window.__mo.load('')">Alle</button>
+                ${temaer.map(t => `<button class="mo-filter ${filterTema===t?'is-active':''}" onclick="window.__mo.load('${t}')">${t}</button>`).join('')}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="wrap">
+      `);
+
+      function renderCard(it) {
+        const isStortinget = it.kildeType === 'stortinget';
+        return `
+          <article class="mo-item ${isStortinget ? 'mo-item--stortinget' : ''}">
+            <div class="mo-item__header">
+              <span class="mo-kildetype mo-kildetype--${isStortinget ? 'stortinget' : 'nyhet'}">${isStortinget ? 'Stortinget' : 'Nyhet'}</span>
+              ${it.temaer.map(t => `<span class="mo-item__tema">${escapeHtml(t)}</span>`).join('')}
+              <span class="mo-item__date">${escapeHtml(fmtDate(it.pubDate))}</span>
+              <span class="mo-item__kilde">${escapeHtml(it.kilde)}</span>
+            </div>
+            <h2 class="mo-item__title">
+              <a href="${escapeHtml(it.link)}" target="_blank" rel="noopener">${escapeHtml(it.tittel)}</a>
+            </h2>
+            ${isStortinget && it.til_minister ? `<p class="mo-item__summary">Stilt til: ${escapeHtml(it.til_minister)} · Status: ${escapeHtml(it.status || '?')}</p>` : ''}
+            ${it.sammendrag ? `<p class="mo-item__summary">${escapeHtml(it.sammendrag)}…</p>` : ''}
+
+            ${it.motvinklinger && it.motvinklinger.length ? `
+              <div class="mo-section">
+                <div class="mo-section__label">Motoffensiv — forslag til vinkling</div>
+                ${it.motvinklinger.map(v => `
+                  <div class="mo-vinkling">
+                    <h3 class="mo-vinkling__title">${escapeHtml(v.overskrift)}</h3>
+                    <p class="mo-vinkling__arg">${escapeHtml(v.argument)}</p>
+                    <p class="mo-vinkling__formidler">Formidler: ${escapeHtml(v.formidler)}</p>
+                    <p class="mo-vinkling__kilde">Kilde: <a href="${escapeHtml(v.kilde)}" target="_blank" rel="noopener">${escapeHtml(shortUrl(v.kilde))}…</a></p>
+                  </div>
+                `).join('')}
+              </div>
+            ` : ''}
+
+            ${it.frpProgram && it.frpProgram.length ? `
+              <div class="mo-section">
+                <div class="mo-section__label">Frps eget program på dette temaet — sitat mot sitat</div>
+                <div class="mo-program">
+                  ${it.frpProgram.map(p => `
+                    <div class="mo-program__punkt">
+                      <span class="mo-program__tema">${escapeHtml(p.tema)}</span>${escapeHtml(p.tekst)}
+                      <span class="mo-program__kilde"><a href="${escapeHtml(p.kilde_url)}" target="_blank" rel="noopener">${escapeHtml(p.kilde)}</a></span>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            ` : ''}
+
+            ${it.utredninger && it.utredninger.length ? `
+              <div class="mo-section">
+                <div class="mo-section__label">Faktagrunnlag — sentrale utredninger</div>
+                <div class="mo-utredninger">
+                  ${it.utredninger.map(u => `
+                    <div class="mo-utr-item">
+                      <div class="mo-utr-item__type">${escapeHtml(u.type)} · ${escapeHtml(String(u.aar))}</div>
+                      <div class="mo-utr-item__title"><a href="${escapeHtml(u.url)}" target="_blank" rel="noopener">${escapeHtml(u.tittel)}</a></div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            ` : ''}
+          </article>
+        `;
+      }
+
+      // Seksjon 1: nyheter
+      html.push(`<h2 class="mo-subheader">Ferske nyhetsutspill<span class="mo-subheader__meta">Fra frp.no, riksmedier og Frp-topper · siste 14 dager · ${data.count} saker</span></h2>`);
+      if (!data.items || !data.items.length) {
+        html.push(`<div class="mo-empty">Ingen relevante Frp-utspill i dette tidsvinduet.</div>`);
+      } else {
+        for (const it of data.items) {
+          html.push(renderCard(it));
+        }
+      }
+
+      // Seksjon 2: Stortinget
+      const stCount = (data.stortinget || []).length;
+      html.push(`<h2 class="mo-subheader">Fra Stortinget<span class="mo-subheader__meta">Skriftlige, muntlige og interpellasjoner fra Frp-representanter · siste sesjon · ${stCount} saker</span></h2>`);
+      if (!stCount) {
+        html.push(`<div class="mo-empty">Ingen Frp-spørsmål med tema-treff i denne sesjonen.</div>`);
+      } else {
+        for (const it of data.stortinget) {
+          html.push(renderCard(it));
+        }
+      }
+
+      html.push(`
+          </div>
+        </div>
+      `);
+
+      app.innerHTML = html.join('');
+    }
+
+    // Eksporter for filter-knapper
+    window.__mo = {
+      load: (tema) => renderData(token, tema),
+    };
+  })();
+  </script>
+</body>
+</html>

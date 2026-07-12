@@ -1,0 +1,6 @@
+.git
+build_pages.py
+build_all.py
+update_shell.py
+update_related.py
+*.py

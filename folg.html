@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Følg oss — Usminket politikk</title>
+  <meta name="description" content="Abonner på RSS-feeder fra regjeringen.no per tema, eller få et sammendrag på e-post når Usminket politikk oppdateres." />
+  <meta property="og:title" content="Følg oss — Usminket politikk" />
+  <meta property="og:description" content="Abonner på RSS-feeder fra regjeringen.no per tema, eller få e-postvarsel når vi oppdaterer sidene." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='18' r='11' fill='%23C7302B'/%3E%3Cpath d='M14 6c1 2 4 3 5 1' stroke='%2300843A' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='11' font-weight='700' font-style='italic' fill='%23fff'%3EFrp%3C/text%3E%3C/svg%3E" />
+  <link rel="alternate" type="application/rss+xml" title="Regjeringen.no — alle nyheter" href="https://www.regjeringen.no/no/rss/Rss/2581966/" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="brand" aria-label="Usminket politikk — forside">
+      <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="22" r="14" fill="#C7302B"/>
+        <path d="M17 7c1 3 5 4 6 1" stroke="#00843A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <text x="20" y="27" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="13" font-weight="700" font-style="italic" fill="#fff">Frp</text>
+      </svg>
+      <span class="brand__wordmark">Usminket <em>politikk</em></span>
+    </a>
+    <button class="nav-toggle" data-nav-toggle aria-label="Åpne meny" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <nav class="nav" data-nav aria-label="Hovedmeny">
+      <a href="index.html">Forside</a>
+      <a href="index.html#tema" data-desktop-only>Tema</a>
+      <a href="budsjett.html" data-desktop-only>Analyser</a>
+      <a href="skatt.html" data-mobile-only>Skatt</a>
+      <a href="velferd.html" data-mobile-only>Velferd</a>
+      <a href="arbeidsliv.html" data-mobile-only>Arbeidsliv</a>
+      <a href="klima.html" data-mobile-only>Klima</a>
+      <a href="innvandring.html" data-mobile-only>Innvandring</a>
+      <a href="justis.html" data-mobile-only>Justis</a>
+      <a href="distrikt.html" data-mobile-only>Distrikt</a>
+      <a href="samferdsel.html" data-mobile-only>Samferdsel</a>
+      <a href="utenriks.html" data-mobile-only>Utenriks</a>
+      <a href="budsjett.html" data-mobile-only>Budsjett</a>
+      <a href="folk-flest.html" data-mobile-only>Folk flest</a>
+      <a href="folg.html" class="is-active">Følg</a>
+      <a href="om.html">Om</a>
+      <a href="motoffensiv" class="nav-mo" data-mo-link aria-label="Motoffensiv (internt)">Motoffensiv</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Brødsmulesti">
+    <a href="index.html">Forside</a><span class="crumb__sep">/</span><span>Følg oss</span>
+  </nav>
+</div>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="page-hero__eyebrow">Hold deg oppdatert</div>
+    <h1 class="page-hero__title">Følg <em>Usminket politikk</em></h1>
+    <p class="page-hero__lead">Abonner på RSS-strømmene fra regjeringen.no per tema — eller få et kort e-postsammendrag når vi oppdaterer denne siden med nye analyser og lupene.</p>
+  </div>
+</section>
+
+<section class="section" id="epost">
+  <div class="wrap">
+    <span class="section-eyebrow">Nyhetsbrev · E-post</span>
+    <h2 class="section-title reveal">Få et <em>varsel når vi oppdaterer</em></h2>
+    <p class="lede" style="max-width: 68ch; margin-bottom: var(--space-6, 1.5rem); color: var(--muted);">
+      Vi sender maks to e-poster per måned: en kort oppsummering av nye analyser, nye lupe-artikler, eller viktige politiske hendelser vi har dokumentert. Ingen reklame. Du kan melde deg av med ett klikk.
+    </p>
+
+    <div class="folg-epost-skjema">
+      <form id="epost-form"
+            action="https://buttondown.email/api/emails/embed-subscribe/usminket"
+            method="post"
+            target="popupwindow"
+            onsubmit="window.open('https://buttondown.email/usminket', 'popupwindow')">
+        <div class="folg-epost-skjema__inputrad">
+          <input type="email"
+                 name="email"
+                 placeholder="din@epost.no"
+                 aria-label="E-postadresse"
+                 required />
+          <button type="submit">Abonner</button>
+        </div>
+
+        <fieldset class="folg-tema-valg">
+          <legend>Velg hvilke tema du vil få varsler om</legend>
+          <div class="folg-tema-grid">
+            <label><input type="checkbox" name="metadata__tag" value="skatt" data-tema="skatt"> Skatt og økonomi</label>
+            <label><input type="checkbox" name="metadata__tag" value="velferd" data-tema="velferd"> Velferd og pensjon</label>
+            <label><input type="checkbox" name="metadata__tag" value="arbeidsliv" data-tema="arbeidsliv"> Arbeidsliv</label>
+            <label><input type="checkbox" name="metadata__tag" value="klima" data-tema="klima"> Klima og miljø</label>
+            <label><input type="checkbox" name="metadata__tag" value="justis" data-tema="justis"> Justis og beredskap</label>
+            <label><input type="checkbox" name="metadata__tag" value="innvandring" data-tema="innvandring"> Innvandring</label>
+            <label><input type="checkbox" name="metadata__tag" value="distrikt" data-tema="distrikt"> Distrikt og kommune</label>
+            <label><input type="checkbox" name="metadata__tag" value="samferdsel" data-tema="samferdsel"> Samferdsel</label>
+            <label><input type="checkbox" name="metadata__tag" value="utenriks" data-tema="utenriks"> Utenriks og forsvar</label>
+            <label><input type="checkbox" name="metadata__tag" value="budsjett" data-tema="budsjett"> Statsbudsjett</label>
+            <label><input type="checkbox" name="metadata__tag" value="generelt" data-tema="generelt"> Alle tema (samlevarsel)</label>
+          </div>
+          <p class="folg-tema-valg__hint">La alle stå tomme for å få alle varsler, eller velg spesifikke tema for å kun få e-post om det som interesserer deg.</p>
+        </fieldset>
+      </form>
+      <p class="folg-epost-skjema__note">
+        Ved å abonnere godtar du <a href="https://buttondown.email/privacy" target="_blank" rel="noopener" style="color: var(--red);">Buttondowns personvernvilkår</a>. Vi lagrer bare e-postadressen din og hvilke tema du ønsker varsler om. Ingen reklame, meld av med ett klikk.
+      </p>
+    </div>
+
+    <script>
+      // Forhåndsvelg tema basert på ?tema=... i URL-en
+      (function() {
+        var params = new URLSearchParams(window.location.search);
+        var tema = params.get('tema');
+        if (!tema) return;
+        var boks = document.querySelector('.folg-tema-grid input[data-tema="' + tema + '"]');
+        if (boks) {
+          boks.checked = true;
+          // Rull skjemaet inn i sikte
+          setTimeout(function() {
+            document.getElementById('epost').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 100);
+        }
+      })();
+    </script>
+  </div>
+</section>
+
+<section class="section section--surface">
+  <div class="wrap">
+    <span class="section-eyebrow">RSS-feeder · Per tema</span>
+    <h2 class="section-title reveal">Følg <em>regjeringen.no direkte</em></h2>
+    <p class="lede" style="max-width: 68ch; margin-bottom: var(--space-4, 1rem); color: var(--muted);">
+      Alle RSS-feeder nedenfor kommer rett fra regjeringen.no og oppdateres i sanntid. Kopier lenken inn i din RSS-leser (f.eks. Feedly, Inoreader, NetNewsWire, Reeder, eller Thunderbird).
+    </p>
+
+    <div class="folg-grid">
+
+      <article class="folg-kort">
+        <span class="folg-kort__meta">Alle departementer</span>
+        <h3 class="folg-kort__tittel">Regjeringen.no — hovedstrøm</h3>
+        <p class="folg-kort__beskr">Nyheter, pressemeldinger, dokumenter og lovforslag fra alle departementer og Statsministerens kontor.</p>
+        <a href="https://www.regjeringen.no/no/rss/Rss/2581966/" class="folg-kort__lenke" target="_blank" rel="noopener">Abonner på RSS →</a>
+      </article>
+
+      <article class="folg-kort">
+        <span class="folg-kort__meta">Finansdepartementet · Skatt · Budsjett</span>
+        <h3 class="folg-kort__tittel">Skatt og økonomi</h3>
+        <p class="folg-kort__beskr">Statsbudsjett, revidert nasjonalbudsjett, skattepolitikk, finansmarkedene og Statens pensjonsfond.</p>
+        <a href="https://www.regjeringen.no/no/rss/Rss/2581966/?owner=216" class="folg-kort__lenke" target="_blank" rel="noopener">Abonner på RSS →</a>
+      </article>
+
+      <article class="folg-kort">
+        <span class="folg-kort__meta">Arbeids- og inkluderingsdep.</span>
+        <h3 class="folg-kort__tittel">Velferd og arbeidsliv</h3>
+        <p class="folg-kort__beskr">Trygdeytelser, pensjon, arbeidsliv, lønnsoppgjør, integrering og arbeidsmarkedspolitikk.</p>
+        <a href="https://www.regjeringen.no/no/rss/Rss/2581966/?owner=165" class="folg-kort__lenke" target="_blank" rel="noopener">Abonner på RSS →</a>
+      </article>
+
+      <article class="folg-kort">
+        <span class="folg-kort__meta">Klima- og miljødepartementet</span>
+        <h3 class="folg-kort__tittel">Klima og miljø</h3>
+        <p class="folg-kort__beskr">Klimaplanen, kvotesystem, naturvern, forurensning og oppfølging av Paris-avtalen.</p>
+        <a href="https://www.regjeringen.no/no/rss/Rss/2581966/?owner=668" class="folg-kort__lenke" target="_blank" rel="noopener">Abonner på RSS →</a>
+      </article>
+
+      <article class="folg-kort">
+        <span class="folg-kort__meta">Justis- og beredskapsdep.</span>
+        <h3 class="folg-kort__tittel">Justis og innvandring</h3>
+        <p class="folg-kort__beskr">Politi, kriminalitet, samfunnssikkerhet, asyl, integrering og utlendingsfeltet.</p>
+        <a href="https://www.regjeringen.no/no/rss/Rss/2581966/?owner=463" class="folg-kort__lenke" target="_blank" rel="noopener">Abonner på RSS →</a>
+      </article>
+
+      <article class="folg-kort">
+        <span class="folg-kort__meta">Kommunal- og distriktsdep.</span>
+        <h3 class="folg-kort__tittel">Distrikt og kommune</h3>
+        <p class="folg-kort__beskr">Kommuneøkonomi, distriktspolitikk, regional utvikling og forvaltning.</p>
+        <a href="https://www.regjeringen.no/no/rss/Rss/2581966/?owner=504" class="folg-kort__lenke" target="_blank" rel="noopener">Abonner på RSS →</a>
+      </article>
+
+      <article class="folg-kort">
+        <span class="folg-kort__meta">Samferdselsdepartementet</span>
+        <h3 class="folg-kort__tittel">Samferdsel og transport</h3>
+        <p class="folg-kort__beskr">Nasjonal transportplan, vei, jernbane, luftfart, kollektivtrafikk og bompenger.</p>
+        <a href="https://www.regjeringen.no/no/rss/Rss/2581966/?owner=791" class="folg-kort__lenke" target="_blank" rel="noopener">Abonner på RSS →</a>
+      </article>
+
+      <article class="folg-kort">
+        <span class="folg-kort__meta">Utenriksdepartementet</span>
+        <h3 class="folg-kort__tittel">Utenriks og forsvar</h3>
+        <p class="folg-kort__beskr">EU/EØS, sikkerhetspolitikk, bistand, sanksjoner, Ukraina-støtte og internasjonale forhandlinger.</p>
+        <a href="https://www.regjeringen.no/no/rss/Rss/2581966/?owner=833" class="folg-kort__lenke" target="_blank" rel="noopener">Abonner på RSS →</a>
+      </article>
+
+      <article class="folg-kort">
+        <span class="folg-kort__meta">Statsministerens kontor</span>
+        <h3 class="folg-kort__tittel">Statsministerens kontor</h3>
+        <p class="folg-kort__beskr">Politiske hovedtaler, statsrådsutnevnelser, offisielle uttalelser og pressekonferanser fra SMK.</p>
+        <a href="https://www.regjeringen.no/no/rss/Rss/2581966/?owner=875" class="folg-kort__lenke" target="_blank" rel="noopener">Abonner på RSS →</a>
+      </article>
+
+      <article class="folg-kort">
+        <span class="folg-kort__meta">Innholdstype</span>
+        <h3 class="folg-kort__tittel">Bare nyheter og pressemeldinger</h3>
+        <p class="folg-kort__beskr">Filtrert på nyheter — uten høringer, proposisjoner og forskrifter. Rask oversikt over dagens saker.</p>
+        <a href="https://www.regjeringen.no/no/rss/Rss/2581966/?documenttype=aktuelt/nyheter" class="folg-kort__lenke" target="_blank" rel="noopener">Abonner på RSS →</a>
+      </article>
+
+      <article class="folg-kort">
+        <span class="folg-kort__meta">Innholdstype</span>
+        <h3 class="folg-kort__tittel">Bare NOU-er og proposisjoner</h3>
+        <p class="folg-kort__beskr">Faglige utredninger, lovforslag og forslag til stortingsvedtak — for deg som følger politikk i detalj.</p>
+        <a href="https://www.regjeringen.no/no/rss/Rss/2581966/?documenttype=dokumenter/nouer" class="folg-kort__lenke" target="_blank" rel="noopener">Abonner på RSS (NOU-er) →</a>
+      </article>
+
+      <article class="folg-kort">
+        <span class="folg-kort__meta">Tema · Skatt</span>
+        <h3 class="folg-kort__tittel">Skatter og avgifter</h3>
+        <p class="folg-kort__beskr">Tema-filtrert feed for alt om skatter og avgifter på tvers av departementene.</p>
+        <a href="https://www.regjeringen.no/no/rss/Rss/2581966/?topic=931/1359" class="folg-kort__lenke" target="_blank" rel="noopener">Abonner på RSS →</a>
+      </article>
+
+    </div>
+
+    <div class="sources" style="margin-top: var(--space-8, 2rem);">
+      <div class="sources__title">Sette opp egen filtrert RSS</div>
+      <p style="color: var(--muted); font-size: 0.92rem; line-height: 1.55;">
+        Vil du kombinere flere filtre (f.eks. bare NOU-er fra Finansdepartementet)? Gå til regjeringens
+        <a href="https://www.regjeringen.no/no/aktuelt/rss/id2581966/" target="_blank" rel="noopener" style="color: var(--red);">RSS-oppsettside</a>
+        og velg innholdstype, tema og departement. Klikk «Abonner» — så får du en spesialtilpasset URL du kan kopiere inn i din RSS-leser.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <span class="section-eyebrow">Hvorfor RSS?</span>
+    <h2 class="section-title reveal">RSS gir deg <em>kontroll over informasjonsstrømmen</em></h2>
+    <div class="prose" style="max-width: 68ch;">
+      <p>
+        RSS er en gammel, robust standard som lar deg samle nyheter fra mange kilder på ett sted — uten algoritmer, uten reklame, uten at noen tracker hva du leser. Regjeringen.no legger ut alt gjennom RSS: nyheter, pressemeldinger, høringer, proposisjoner, NOU-er.
+      </p>
+      <p>
+        Trenger du en RSS-leser? <a href="https://feedly.com/" target="_blank" rel="noopener">Feedly</a> og <a href="https://www.inoreader.com/" target="_blank" rel="noopener">Inoreader</a> er gode nettbaserte alternativer. På iPhone/Mac finnes <a href="https://reederapp.com/" target="_blank" rel="noopener">Reeder</a> og <a href="https://netnewswire.com/" target="_blank" rel="noopener">NetNewsWire</a>. På Android er <a href="https://f-droid.org/en/packages/com.nononsenseapps.feeder.play/" target="_blank" rel="noopener">Feeder</a> og <a href="https://feedme.seazon.io/" target="_blank" rel="noopener">FeedMe</a> gode valg.
+      </p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <span class="brand__wordmark">Usminket <em>politikk</em></span>
+      <p class="site-footer__tagline">Fakta og analyse om norsk politikk — uten sminke.</p>
+    </div>
+    <nav class="site-footer__nav" aria-label="Bunnmeny">
+      <a href="index.html">Forside</a>
+      <a href="index.html#tema">Tema</a>
+      <a href="budsjett.html">Analyser</a>
+      <a href="folg.html">Følg oss</a>
+      <a href="om.html">Om</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>

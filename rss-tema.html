@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RSS-feed — Usminket politikk</title>
+  <meta name="description" content="Les siste nyheter fra regjeringen.no per tema, og abonner via din foretrukne RSS-leser." />
+  <meta property="og:title" content="Siste nytt fra regjeringen.no" />
+  <meta property="og:description" content="Les siste nyheter fra regjeringen.no per tema — filtrert på departementet du følger." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='18' r='11' fill='%23C7302B'/%3E%3Cpath d='M14 6c1 2 4 3 5 1' stroke='%2300843A' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='11' font-weight='700' font-style='italic' fill='%23fff'%3EFrp%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="brand" aria-label="Usminket politikk — forside">
+      <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="22" r="14" fill="#C7302B"/>
+        <path d="M17 7c1 3 5 4 6 1" stroke="#00843A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <text x="20" y="27" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="13" font-weight="700" font-style="italic" fill="#fff">Frp</text>
+      </svg>
+      <span class="brand__wordmark">Usminket <em>politikk</em></span>
+    </a>
+    <button class="nav-toggle" data-nav-toggle aria-label="Åpne meny" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <nav class="nav" data-nav aria-label="Hovedmeny">
+      <a href="index.html">Forside</a>
+      <a href="index.html#tema" data-desktop-only>Tema</a>
+      <a href="budsjett.html" data-desktop-only>Analyser</a>
+      <a href="skatt.html" data-mobile-only>Skatt</a>
+      <a href="velferd.html" data-mobile-only>Velferd</a>
+      <a href="arbeidsliv.html" data-mobile-only>Arbeidsliv</a>
+      <a href="klima.html" data-mobile-only>Klima</a>
+      <a href="innvandring.html" data-mobile-only>Innvandring</a>
+      <a href="justis.html" data-mobile-only>Justis</a>
+      <a href="distrikt.html" data-mobile-only>Distrikt</a>
+      <a href="samferdsel.html" data-mobile-only>Samferdsel</a>
+      <a href="utenriks.html" data-mobile-only>Utenriks</a>
+      <a href="budsjett.html" data-mobile-only>Budsjett</a>
+      <a href="folk-flest.html" data-mobile-only>Folk flest</a>
+      <a href="folg.html" class="is-active">Følg</a>
+      <a href="om.html">Om</a>
+      <a href="motoffensiv" class="nav-mo" data-mo-link aria-label="Motoffensiv (internt)">Motoffensiv</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="wrap">
+  <nav class="crumb" aria-label="Brødsmulesti">
+    <a href="index.html">Forside</a><span class="crumb__sep">/</span><a href="folg.html">Følg</a><span class="crumb__sep">/</span><span id="crumb-tema">Siste nytt</span>
+  </nav>
+</div>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="page-hero__eyebrow" id="hero-eyebrow">Siste nytt · regjeringen.no</div>
+    <h1 class="page-hero__title" id="hero-title">Siste nytt fra <em>regjeringen</em></h1>
+    <p class="page-hero__lead" id="hero-lead">Live-oversikt over de siste 15 sakene fra departementet, hentet direkte fra regjeringen.no.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+
+    <!-- Abonner-boks — vises alltid -->
+    <div class="rss-abonner" id="abonner-boks">
+      <div class="rss-abonner__tekst">
+        <span class="folg-boks__eyebrow">Abonner på RSS</span>
+        <h2 class="rss-abonner__tittel">Få oppdateringer i din RSS-leser</h2>
+        <p class="rss-abonner__lede">Kopier lenken under, eller trykk direkte for å legge feeden til i tjenesten du bruker.</p>
+      </div>
+
+      <div class="rss-abonner__url">
+        <code id="rss-url">https://www.regjeringen.no/no/rss/Rss/2581966/</code>
+        <button type="button" class="rss-kopi-knapp" id="kopi-knapp" aria-label="Kopier RSS-URL">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="16" height="16">
+            <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+          </svg>
+          <span id="kopi-tekst">Kopier</span>
+        </button>
+      </div>
+
+      <div class="rss-abonner__lesere">
+        <a class="rss-leser-knapp" id="feedly-knapp" href="#" target="_blank" rel="noopener">Feedly</a>
+        <a class="rss-leser-knapp" id="inoreader-knapp" href="#" target="_blank" rel="noopener">Inoreader</a>
+        <a class="rss-leser-knapp" id="netvibes-knapp" href="#" target="_blank" rel="noopener">Netvibes</a>
+        <a class="rss-leser-knapp" id="raw-knapp" href="#" target="_blank" rel="noopener">Åpne rå RSS</a>
+      </div>
+
+      <p class="rss-abonner__hjelp">
+        Har du ikke en RSS-leser? Vi anbefaler <a href="https://feedly.com/" target="_blank" rel="noopener">Feedly</a> (gratis, nettbasert) eller <a href="https://www.inoreader.com/" target="_blank" rel="noopener">Inoreader</a>. På Mac/iPhone er <a href="https://reederapp.com/" target="_blank" rel="noopener">Reeder</a> og <a href="https://netnewswire.com/" target="_blank" rel="noopener">NetNewsWire</a> gode valg.
+      </p>
+    </div>
+
+    <!-- Liste over siste nyheter -->
+    <div class="rss-liste-hode">
+      <h2 class="section-title" style="margin: var(--space-6, 1.5rem) 0 var(--space-3, 0.75rem)">Siste nytt</h2>
+      <p class="rss-liste-meta" id="liste-meta">Laster …</p>
+    </div>
+
+    <div class="rss-liste" id="rss-liste" aria-live="polite">
+      <div class="rss-item rss-item--laster">
+        <div class="rss-skjelett rss-skjelett--tittel"></div>
+        <div class="rss-skjelett rss-skjelett--dato"></div>
+        <div class="rss-skjelett rss-skjelett--tekst"></div>
+      </div>
+      <div class="rss-item rss-item--laster">
+        <div class="rss-skjelett rss-skjelett--tittel"></div>
+        <div class="rss-skjelett rss-skjelett--dato"></div>
+        <div class="rss-skjelett rss-skjelett--tekst"></div>
+      </div>
+      <div class="rss-item rss-item--laster">
+        <div class="rss-skjelett rss-skjelett--tittel"></div>
+        <div class="rss-skjelett rss-skjelett--dato"></div>
+        <div class="rss-skjelett rss-skjelett--tekst"></div>
+      </div>
+    </div>
+
+    <p class="rss-kilde">
+      Kilde: <a href="https://www.regjeringen.no" target="_blank" rel="noopener">regjeringen.no</a>. Feeden hentes live når du åpner siden.
+    </p>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <span class="brand__wordmark">Usminket <em>politikk</em></span>
+      <p class="site-footer__tagline">Fakta og analyse om norsk politikk — uten sminke.</p>
+    </div>
+    <nav class="site-footer__nav" aria-label="Bunnmeny">
+      <a href="index.html">Forside</a>
+      <a href="index.html#tema">Tema</a>
+      <a href="budsjett.html">Analyser</a>
+      <a href="folg.html">Følg oss</a>
+      <a href="om.html">Om</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var tema = (params.get('tema') || 'generelt').toLowerCase();
+
+  var el = {
+    crumbTema: document.getElementById('crumb-tema'),
+    heroEyebrow: document.getElementById('hero-eyebrow'),
+    heroTitle: document.getElementById('hero-title'),
+    heroLead: document.getElementById('hero-lead'),
+    rssUrl: document.getElementById('rss-url'),
+    feedly: document.getElementById('feedly-knapp'),
+    inoreader: document.getElementById('inoreader-knapp'),
+    netvibes: document.getElementById('netvibes-knapp'),
+    raw: document.getElementById('raw-knapp'),
+    kopiKnapp: document.getElementById('kopi-knapp'),
+    kopiTekst: document.getElementById('kopi-tekst'),
+    liste: document.getElementById('rss-liste'),
+    listeMeta: document.getElementById('liste-meta'),
+  };
+
+  function esc(s) {
+    return String(s || '').replace(/[&<>"']/g, function(c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function formatDato(iso) {
+    if (!iso) return '';
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return iso;
+    return d.toLocaleDateString('nb-NO', { day: '2-digit', month: 'long', year: 'numeric' });
+  }
+
+  function tidSiden(iso) {
+    if (!iso) return '';
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return '';
+    var diff = Date.now() - d.getTime();
+    var min = Math.floor(diff / 60000);
+    var t = Math.floor(min / 60);
+    var dag = Math.floor(t / 24);
+    if (min < 60) return 'for ' + min + ' min siden';
+    if (t < 24) return 'for ' + t + ' t siden';
+    if (dag < 7) return 'for ' + dag + ' dag' + (dag === 1 ? '' : 'er') + ' siden';
+    return formatDato(iso);
+  }
+
+  function oppdaterKnapper(rssUrl) {
+    var e = encodeURIComponent(rssUrl);
+    el.feedly.href = 'https://feedly.com/i/subscription/feed/' + e;
+    el.inoreader.href = 'https://www.inoreader.com/?add_feed=' + e;
+    el.netvibes.href = 'https://www.netvibes.com/subscribe.php?url=' + e;
+    el.raw.href = rssUrl;
+  }
+
+  el.kopiKnapp.addEventListener('click', async function() {
+    var url = el.rssUrl.textContent;
+    try {
+      await navigator.clipboard.writeText(url);
+      el.kopiTekst.textContent = 'Kopiert';
+      setTimeout(function() { el.kopiTekst.textContent = 'Kopier'; }, 2000);
+    } catch (e) {
+      // Fallback for eldre nettlesere / FB-webview
+      var t = document.createElement('textarea');
+      t.value = url;
+      document.body.appendChild(t);
+      t.select();
+      try { document.execCommand('copy'); el.kopiTekst.textContent = 'Kopiert'; } catch (_) { el.kopiTekst.textContent = 'Marker og kopier'; }
+      document.body.removeChild(t);
+      setTimeout(function() { el.kopiTekst.textContent = 'Kopier'; }, 2500);
+    }
+  });
+
+  function visError(melding) {
+    el.liste.innerHTML =
+      '<div class="rss-feil">' +
+      '<h3>Kunne ikke hente feeden</h3>' +
+      '<p>' + esc(melding) + '</p>' +
+      '<p>Du kan fortsatt abonnere på RSS ved å bruke knappene over.</p>' +
+      '</div>';
+    el.listeMeta.textContent = '';
+  }
+
+  fetch('/api/rss-tema?tema=' + encodeURIComponent(tema))
+    .then(function(r) {
+      if (!r.ok) throw new Error('Status ' + r.status);
+      return r.json();
+    })
+    .then(function(data) {
+      // Oppdater header og meta
+      document.title = data.navn + ' · Siste nytt — Usminket politikk';
+      el.crumbTema.textContent = data.navn;
+      el.heroEyebrow.textContent = 'Siste nytt · ' + data.dept;
+      el.heroTitle.innerHTML = 'Siste nytt om <em>' + esc(data.navn) + '</em>';
+      el.heroLead.textContent = 'Live-oversikt over de siste ' + data.antall + ' sakene fra ' + data.dept + ', hentet direkte fra regjeringen.no.';
+      el.rssUrl.textContent = data.rssUrl;
+      oppdaterKnapper(data.rssUrl);
+
+      // Meta og liste
+      var hentet = new Date(data.hentet);
+      el.listeMeta.textContent = 'Oppdatert ' + hentet.toLocaleTimeString('nb-NO', { hour: '2-digit', minute: '2-digit' }) + ' · ' + data.antall + ' saker';
+
+      if (!data.items.length) {
+        el.liste.innerHTML = '<div class="rss-feil"><p>Ingen saker akkurat nå. Prøv igjen om en stund.</p></div>';
+        return;
+      }
+
+      el.liste.innerHTML = data.items.map(function(it) {
+        var dato = formatDato(it.pubDate);
+        var siden = tidSiden(it.pubDate);
+        return (
+          '<article class="rss-item">' +
+            '<a href="' + esc(it.link) + '" class="rss-item__lenke" target="_blank" rel="noopener">' +
+              '<h3 class="rss-item__tittel">' + esc(it.title) + '</h3>' +
+              '<div class="rss-item__meta">' +
+                '<time datetime="' + esc(it.pubDate) + '">' + esc(dato) + '</time>' +
+                (siden ? '<span class="rss-item__siden">' + esc(siden) + '</span>' : '') +
+              '</div>' +
+              (it.summary ? '<p class="rss-item__sammendrag">' + esc(it.summary.slice(0, 240)) + (it.summary.length > 240 ? '…' : '') + '</p>' : '') +
+            '</a>' +
+          '</article>'
+        );
+      }).join('');
+    })
+    .catch(function(err) {
+      visError(err.message || 'Feeden er ikke tilgjengelig akkurat nå.');
+    });
+})();
+</script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
