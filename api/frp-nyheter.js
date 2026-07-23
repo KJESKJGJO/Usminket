@@ -137,6 +137,27 @@ function klassifiserTema(tittel, sammendrag) {
   return treff;
 }
 
+// Hard relevanssjekk — saken må faktisk nevne Frp eller en kjent Frp-politiker
+// i tittel eller sammendrag. Google Nyheter matcher av og til på tags eller
+// sidebar-innhold, og slipper gjennom saker som ikke handler om Frp i det hele
+// tatt (f.eks. sportsnyheter fra lokalaviser). Denne sjekken stopper det.
+const FRP_TERMS = /\b(frp|fremskrittspartiet|sylvi\s+listhaug|ketil\s+solvik-olsen|hans\s+andreas\s+limi|silje\s+hjemdal|roy\s+steffensen|erlend\s+wiborg|tor\s+andr[eé]\s+johnsen|bengt\s+rune\s+strifeldt|morten\s+wold|christian\s+tybring-gjedde|terje\s+søviknes|per-?willy\s+amundsen|helge\s+andré?\s+njåstad|carl\s+i\.?\s+hagen|siv\s+jensen|listhaug|solvik-olsen|tybring-gjedde|søviknes|njåstad|frps?|frp-|-frp)\b/i;
+
+// Svarteliste — ord som sterkt indikerer at saken IKKE handler om norsk politikk.
+// Hvis noen av disse dukker opp OG Frp-terminologien mangler, dropper vi saken.
+const OFF_TOPIC_MARKERS = /\b(fotballegend|premier\s+league|champions\s+league|manchester|liverpool|newcastle|arsenal|chelsea|barcelona|real\s+madrid|nba|nfl|formel\s*1|f1|eurovision|k[-\s]?pop|hollywood|oscar-vinner|golden\s+globe|kongelig\s+bryllup|kjendis|realitystjerne)\b/i;
+
+function erRelevantForFrp(tittel, sammendrag) {
+  const tekst = (tittel || '') + ' ' + (sammendrag || '');
+  // Må ha eksplisitt Frp-referanse
+  if (!FRP_TERMS.test(tekst)) return false;
+  // Ekstra sikkerhet: hvis saken har off-topic-markører OG bare et svakt Frp-treff
+  // (kun i sammendrag, ikke i tittel), dropper vi den. Dette fanger tilfeller der
+  // Frp nevnes i forbifarten i en helt annen sak.
+  if (OFF_TOPIC_MARKERS.test(tekst) && !FRP_TERMS.test(tittel || '')) return false;
+  return true;
+}
+
 // Rens tittel — Google Nyheter legger ofte kilde-suffix på titlene.
 function renseTittel(raw, kilde) {
   let t = raw
@@ -192,6 +213,9 @@ export default async function handler(req, res) {
         if (!tittel || seenTitle.has(titleKey) || seenLink.has(it.link)) continue;
         seenTitle.add(titleKey);
         seenLink.add(it.link);
+
+        // Hard relevanssjekk — saken må handle om Frp
+        if (!erRelevantForFrp(tittel, it.summary)) continue;
 
         const temaer = klassifiserTema(tittel, it.summary);
         // Vi tar med saker uten tema-match også — for "alle saker"-visning.
