@@ -1990,3 +1990,250 @@ p { text-wrap: pretty; max-width: 68ch; }
     min-width: 0;
   }
 }
+
+/* ==========================================================================
+   Nyhetsfeed — /nyheter (Frps utspill i norske medier)
+   ========================================================================== */
+
+/* Topbar-knapp: "Nyheter" som CTA-lenke i menyen */
+.nav .nav-nyheter {
+  color: var(--white);
+  background: var(--red);
+  padding: 0.42rem 0.9rem;
+  border-radius: 999px;
+  border-bottom: none;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.nav .nav-nyheter:hover,
+.nav .nav-nyheter.is-active {
+  color: var(--white);
+  background: var(--red-hover);
+  border-bottom: none;
+  transform: translateY(-1px);
+}
+@media (max-width: 780px) {
+  .nav .nav-nyheter {
+    display: inline-block;
+    width: auto;
+    padding: 0.5rem 1rem;
+    margin: var(--space-3) 0;
+    border-radius: 999px;
+    border-bottom: none;
+  }
+}
+
+/* Filter-blokk */
+.ny-filter {
+  background: var(--ink-2);
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
+  padding: var(--space-5, 1.25rem);
+  margin-bottom: var(--space-8, 2rem);
+}
+.ny-filter__row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4, 1rem);
+  padding: var(--space-2, 0.5rem) 0;
+}
+.ny-filter__row + .ny-filter__row {
+  border-top: 1px solid var(--line-soft);
+  margin-top: var(--space-3, 0.75rem);
+  padding-top: var(--space-4, 1rem);
+}
+.ny-filter__label {
+  flex: 0 0 90px;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--muted);
+  padding-top: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.ny-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  flex: 1;
+}
+.ny-chip {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.ny-chip:hover {
+  color: var(--white);
+  border-color: var(--red);
+}
+.ny-chip.is-active {
+  background: var(--red);
+  color: var(--white);
+  border-color: var(--red);
+}
+.ny-filter__meta {
+  margin-top: var(--space-4, 1rem);
+  padding-top: var(--space-3, 0.75rem);
+  border-top: 1px solid var(--line-soft);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--muted);
+}
+
+@media (max-width: 640px) {
+  .ny-filter__row {
+    flex-direction: column;
+    gap: var(--space-2, 0.5rem);
+  }
+  .ny-filter__label {
+    flex: none;
+    padding-top: 0;
+  }
+}
+
+/* Liste */
+.ny-liste {
+  display: grid;
+  gap: var(--space-4, 1rem);
+}
+.ny-item {
+  background: var(--ink-2);
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
+  padding: var(--space-5, 1.25rem);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.ny-item:hover {
+  border-color: var(--red);
+  transform: translateY(-1px);
+}
+.ny-item__meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+.ny-item__omraade {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.18rem 0.55rem;
+  border-radius: 4px;
+  background: var(--line);
+  color: var(--white);
+}
+.ny-item__omraade--nasjonalt {
+  background: var(--red);
+  color: var(--white);
+}
+.ny-item__omraade--lokalt {
+  background: #00843A;
+  color: var(--white);
+}
+.ny-item__kilde {
+  font-weight: 600;
+  color: var(--white);
+}
+.ny-item__sep {
+  color: var(--line);
+}
+.ny-item__dato {
+  color: var(--muted);
+}
+.ny-item__tittel-lenke {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+.ny-item__tittel {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  line-height: 1.3;
+  color: var(--white);
+  margin: 0 0 0.6rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.ny-item__tittel-lenke:hover .ny-item__tittel {
+  color: var(--red);
+}
+.ny-item__ingress {
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0 0 0.8rem;
+}
+.ny-item__temaer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.ny-item__tema-chip {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.22rem 0.6rem;
+  border-radius: 999px;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+.ny-item__tema-chip:hover {
+  color: var(--white);
+  border-color: var(--red);
+  background: rgba(199, 48, 43, 0.1);
+}
+
+/* Skjelett / lasteanimasjon */
+.ny-item--laster {
+  pointer-events: none;
+}
+.ny-skjelett {
+  background: linear-gradient(90deg, var(--line-soft) 0%, var(--line) 50%, var(--line-soft) 100%);
+  background-size: 200% 100%;
+  border-radius: 6px;
+  animation: ny-skjelett-anim 1.4s ease-in-out infinite;
+  margin-bottom: 0.6rem;
+}
+.ny-skjelett--dato { width: 40%; height: 14px; }
+.ny-skjelett--tittel { width: 90%; height: 22px; }
+.ny-skjelett--tekst { width: 100%; height: 14px; }
+@keyframes ny-skjelett-anim {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Tom / feil */
+.ny-tom, .ny-feil {
+  background: var(--ink-2);
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
+  padding: var(--space-6, 1.5rem);
+  text-align: center;
+  color: var(--muted);
+}
+.ny-tom h3, .ny-feil h3 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--white);
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+.ny-tom p, .ny-feil p { margin: 0; }

@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nyheter — Frp i norske medier — Usminket politikk</title>
+  <meta name="description" content="Samlet nyhetsfeed: Frps utspill i nasjonale og lokale medier. Oppdateres kontinuerlig, filtreres på område og tema." />
+  <meta property="og:title" content="Nyheter — Frp i norske medier" />
+  <meta property="og:description" content="Samlet feed over Frps utspill i nasjonale og lokale medier — filtrerbar på tema." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='18' r='11' fill='%23C7302B'/%3E%3Cpath d='M14 6c1 2 4 3 5 1' stroke='%2300843A' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='11' font-weight='700' font-style='italic' fill='%23fff'%3EFrp%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="brand" aria-label="Usminket politikk — forside">
+      <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="22" r="14" fill="#C7302B"/>
+        <path d="M17 7c1 3 5 4 6 1" stroke="#00843A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <text x="20" y="27" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="13" font-weight="700" font-style="italic" fill="#fff">Frp</text>
+      </svg>
+      <span class="brand__wordmark">Usminket <em>politikk</em></span>
+    </a>
+    <button class="nav-toggle" data-nav-toggle aria-label="Åpne meny" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <nav class="nav" data-nav aria-label="Hovedmeny">
+      <a href="index.html">Forside</a>
+      <a href="index.html#tema" data-desktop-only>Tema</a>
+      <a href="budsjett.html" data-desktop-only>Analyser</a>
+      <a href="nyheter.html" class="nav-nyheter is-active">Nyheter</a>
+      <a href="skatt.html" data-mobile-only>Skatt</a>
+      <a href="velferd.html" data-mobile-only>Velferd</a>
+      <a href="arbeidsliv.html" data-mobile-only>Arbeidsliv</a>
+      <a href="klima.html" data-mobile-only>Klima</a>
+      <a href="innvandring.html" data-mobile-only>Innvandring</a>
+      <a href="justis.html" data-mobile-only>Justis</a>
+      <a href="distrikt.html" data-mobile-only>Distrikt</a>
+      <a href="samferdsel.html" data-mobile-only>Samferdsel</a>
+      <a href="utenriks.html" data-mobile-only>Utenriks</a>
+      <a href="budsjett.html" data-mobile-only>Budsjett</a>
+      <a href="folk-flest.html" data-mobile-only>Folk flest</a>
+      <a href="folg.html">Følg</a>
+      <a href="om.html">Om</a>
+      <a href="motoffensiv" class="nav-mo" data-mo-link aria-label="Motoffensiv (internt)">Motoffensiv</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="wrap">
+    <nav class="crumb" aria-label="Brødsmulesti">
+      <a href="index.html">Forside</a><span class="crumb__sep">/</span><span>Nyheter</span>
+    </nav>
+  </div>
+
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="page-hero__eyebrow">Frp i norske medier · siste 14 dager</div>
+      <h1 class="page-hero__title">Nyhetsfeed: <em>Frps utspill</em></h1>
+      <p class="page-hero__lead">
+        Samlet oversikt over Frps utspill i nasjonale og lokale medier. Vi henter kontinuerlig fra Google Nyheter, filtrerer ut Frps egne nettsider, og klassifiserer sakene på tema slik at du raskt finner det du leter etter.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+
+      <!-- ============ FILTER ============ -->
+      <div class="ny-filter" data-filter>
+
+        <div class="ny-filter__row">
+          <div class="ny-filter__label">Område</div>
+          <div class="ny-chips" role="tablist" aria-label="Filtrer på område">
+            <button type="button" class="ny-chip is-active" data-omraade="alle" role="tab" aria-selected="true">Alle</button>
+            <button type="button" class="ny-chip" data-omraade="nasjonalt" role="tab" aria-selected="false">Nasjonale medier</button>
+            <button type="button" class="ny-chip" data-omraade="lokalt" role="tab" aria-selected="false">Lokal- og regionale</button>
+          </div>
+        </div>
+
+        <div class="ny-filter__row">
+          <div class="ny-filter__label">Tema</div>
+          <div class="ny-chips" role="tablist" aria-label="Filtrer på tema">
+            <button type="button" class="ny-chip is-active" data-tema="" role="tab" aria-selected="true">Alle</button>
+            <button type="button" class="ny-chip" data-tema="skatt">Skatt</button>
+            <button type="button" class="ny-chip" data-tema="velferd">Velferd</button>
+            <button type="button" class="ny-chip" data-tema="arbeidsliv">Arbeidsliv</button>
+            <button type="button" class="ny-chip" data-tema="klima">Klima</button>
+            <button type="button" class="ny-chip" data-tema="innvandring">Innvandring</button>
+            <button type="button" class="ny-chip" data-tema="justis">Justis</button>
+            <button type="button" class="ny-chip" data-tema="distrikt">Distrikt</button>
+            <button type="button" class="ny-chip" data-tema="samferdsel">Samferdsel</button>
+            <button type="button" class="ny-chip" data-tema="utenriks">Utenriks</button>
+            <button type="button" class="ny-chip" data-tema="budsjett">Budsjett</button>
+          </div>
+        </div>
+
+        <div class="ny-filter__meta" id="ny-meta">Laster …</div>
+      </div>
+
+      <!-- ============ LISTE ============ -->
+      <div class="ny-liste" id="ny-liste" aria-live="polite">
+        <div class="ny-item ny-item--laster">
+          <div class="ny-skjelett ny-skjelett--dato"></div>
+          <div class="ny-skjelett ny-skjelett--tittel"></div>
+          <div class="ny-skjelett ny-skjelett--tekst"></div>
+        </div>
+        <div class="ny-item ny-item--laster">
+          <div class="ny-skjelett ny-skjelett--dato"></div>
+          <div class="ny-skjelett ny-skjelett--tittel"></div>
+          <div class="ny-skjelett ny-skjelett--tekst"></div>
+        </div>
+        <div class="ny-item ny-item--laster">
+          <div class="ny-skjelett ny-skjelett--dato"></div>
+          <div class="ny-skjelett ny-skjelett--tittel"></div>
+          <div class="ny-skjelett ny-skjelett--tekst"></div>
+        </div>
+      </div>
+
+      <p class="news__attribution" style="margin-top: var(--space-8)">
+        Kilder: aggregert via Google Nyheter fra norske medier. Frp.no er ekskludert — vi vil vise hva <em>andre</em> skriver om Frp. Feeden dekker de siste 14 dagene og oppdateres hver 15. minutt.
+      </p>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer__grid">
+    <div class="footer__brand">
+      <svg class="footer__brand__mark" viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="22" r="14" fill="#C7302B"/>
+        <path d="M17 7c1 3 5 4 6 1" stroke="#00843A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <text x="20" y="27" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="13" font-weight="700" font-style="italic" fill="#fff">Frp</text>
+      </svg>
+      <div class="brand__wordmark">Usminket <em>politikk</em></div>
+      <p class="footer__tagline">Kritisk. Saklig. Rettferdig. En redaksjonell vaktbikkje for norsk politisk debatt.</p>
+    </div>
+    <div class="footer__col">
+      <h4>Tema (1–4)</h4>
+      <ul>
+        <li><a href="skatt.html">Skatt</a></li>
+        <li><a href="velferd.html">Velferd</a></li>
+        <li><a href="arbeidsliv.html">Arbeidsliv</a></li>
+        <li><a href="klima.html">Klima</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Tema (5–9)</h4>
+      <ul>
+        <li><a href="innvandring.html">Innvandring</a></li>
+        <li><a href="justis.html">Justis</a></li>
+        <li><a href="distrikt.html">Distrikt</a></li>
+        <li><a href="samferdsel.html">Samferdsel</a></li>
+        <li><a href="utenriks.html">Utenriks</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Analyser</h4>
+      <ul>
+        <li><a href="nyheter.html">Nyheter</a></li>
+        <li><a href="budsjett.html">Budsjett</a></li>
+        <li><a href="folk-flest.html">Folk flest</a></li>
+        <li><a href="om.html">Om siden</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__legal">
+    <p>Uavhengig redaksjonell vaktbikkje. Alle påstander er kildebelagt. Kritikk skal ramme politikk, ikke personer.</p>
+    <p class="footer__meta">© Usminket politikk 2026 · Innlandet, Norge</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var el = {
+    liste: document.getElementById('ny-liste'),
+    meta: document.getElementById('ny-meta'),
+    filter: document.querySelector('[data-filter]'),
+  };
+
+  // Tilstand — leses fra URL og synkroniseres tilbake dit
+  var state = {
+    omraade: 'alle',
+    tema: '',
+  };
+
+  var TEMA_LABEL = {
+    skatt: 'Skatt', velferd: 'Velferd', arbeidsliv: 'Arbeidsliv',
+    klima: 'Klima', innvandring: 'Innvandring', justis: 'Justis',
+    distrikt: 'Distrikt', samferdsel: 'Samferdsel', utenriks: 'Utenriks',
+    budsjett: 'Budsjett',
+  };
+
+  function esc(s) {
+    return String(s || '').replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function domainOf(url) {
+    try { return new URL(url).hostname.replace(/^www\./, ''); } catch { return ''; }
+  }
+
+  function fmtDato(iso) {
+    if (!iso) return '';
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return '';
+    return d.toLocaleDateString('nb-NO', { day: 'numeric', month: 'short', year: 'numeric' });
+  }
+
+  function fmtSiden(iso) {
+    if (!iso) return '';
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return '';
+    var diff = Date.now() - d.getTime();
+    var min = Math.floor(diff / 60000);
+    var t = Math.floor(min / 60);
+    var dag = Math.floor(t / 24);
+    if (min < 60) return 'for ' + Math.max(min, 1) + ' min siden';
+    if (t < 24) return 'for ' + t + ' t siden';
+    if (dag < 7) return 'for ' + dag + ' dag' + (dag === 1 ? '' : 'er') + ' siden';
+    return fmtDato(iso);
+  }
+
+  function omraadeEtikett(kt) {
+    if (kt === 'nasjonalt') return 'Nasjonal';
+    if (kt === 'lokalt') return 'Lokal/regional';
+    return 'Annet';
+  }
+
+  // Enkel oppsummering av <description>-tekst fra Google Nyheter. RSS-feeden
+  // gir vanligvis bare første setning eller to. Vi bruker det som ingress —
+  // renset for HTML og trunkert. Ingen ekstern AI-anrop; det holder feeden
+  // rask og gratis.
+  function lagIngress(sammendrag, tittel) {
+    var s = String(sammendrag || '').trim();
+    if (!s) return '';
+    // Fjern gjentakelse av tittel hvis Google har limt den inn i description
+    var tLow = String(tittel || '').toLowerCase().trim();
+    if (tLow && s.toLowerCase().indexOf(tLow) === 0) {
+      s = s.slice(tLow.length).replace(/^[\s\.\-—–:]+/, '');
+    }
+    if (s.length > 220) s = s.slice(0, 217).replace(/\s+\S*$/, '') + '…';
+    return s;
+  }
+
+  function renderItems(items) {
+    if (!items || !items.length) {
+      el.liste.innerHTML =
+        '<div class="ny-tom">' +
+        '<h3>Ingen saker matcher filtrene</h3>' +
+        '<p>Prøv å utvide til «Alle» på område eller tema, eller kom tilbake senere. Feeden dekker de siste 14 dagene.</p>' +
+        '</div>';
+      return;
+    }
+
+    el.liste.innerHTML = items.map(function (it) {
+      var dom = domainOf(it.link);
+      var kildeTekst = it.kilde || dom || 'Ukjent kilde';
+      var temaChips = (it.temaer || []).map(function (t) {
+        var label = TEMA_LABEL[t] || t;
+        return '<a class="ny-item__tema-chip" href="?omraade=' + encodeURIComponent(state.omraade) + '&tema=' + encodeURIComponent(t) + '">' + esc(label) + '</a>';
+      }).join('');
+      var ingress = lagIngress(it.sammendrag, it.tittel);
+      return (
+        '<article class="ny-item">' +
+          '<div class="ny-item__meta">' +
+            '<span class="ny-item__omraade ny-item__omraade--' + esc(it.kildeType) + '">' + esc(omraadeEtikett(it.kildeType)) + '</span>' +
+            '<span class="ny-item__kilde">' + esc(kildeTekst) + '</span>' +
+            '<span class="ny-item__sep">·</span>' +
+            '<time class="ny-item__dato" datetime="' + esc(it.pubDate) + '">' + esc(fmtSiden(it.pubDate)) + '</time>' +
+          '</div>' +
+          '<a class="ny-item__tittel-lenke" href="' + esc(it.link) + '" target="_blank" rel="noopener noreferrer external">' +
+            '<h2 class="ny-item__tittel">' + esc(it.tittel) + '</h2>' +
+          '</a>' +
+          (ingress ? '<p class="ny-item__ingress">' + esc(ingress) + '</p>' : '') +
+          (temaChips ? '<div class="ny-item__temaer">' + temaChips + '</div>' : '') +
+        '</article>'
+      );
+    }).join('');
+  }
+
+  function oppdaterAktiveChips() {
+    el.filter.querySelectorAll('[data-omraade]').forEach(function (b) {
+      var aktiv = b.getAttribute('data-omraade') === state.omraade;
+      b.classList.toggle('is-active', aktiv);
+      b.setAttribute('aria-selected', aktiv ? 'true' : 'false');
+    });
+    el.filter.querySelectorAll('[data-tema]').forEach(function (b) {
+      var v = b.getAttribute('data-tema') || '';
+      var aktiv = v === state.tema;
+      b.classList.toggle('is-active', aktiv);
+      b.setAttribute('aria-selected', aktiv ? 'true' : 'false');
+    });
+  }
+
+  function oppdaterUrl() {
+    var params = new URLSearchParams();
+    if (state.omraade && state.omraade !== 'alle') params.set('omraade', state.omraade);
+    if (state.tema) params.set('tema', state.tema);
+    var qs = params.toString();
+    var nyUrl = window.location.pathname + (qs ? '?' + qs : '');
+    window.history.replaceState({}, '', nyUrl);
+  }
+
+  function last() {
+    el.meta.textContent = 'Laster …';
+    var params = new URLSearchParams();
+    params.set('omraade', state.omraade || 'alle');
+    if (state.tema) params.set('tema', state.tema);
+    params.set('limit', '50');
+
+    fetch('/api/frp-nyheter?' + params.toString(), { cache: 'no-store' })
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
+      .then(function (data) {
+        var items = (data && data.items) || [];
+        renderItems(items);
+        var hentet = new Date(data.fetchedAt);
+        var tid = hentet.toLocaleTimeString('nb-NO', { hour: '2-digit', minute: '2-digit' });
+        var filterInfo = [];
+        if (state.omraade && state.omraade !== 'alle') filterInfo.push(state.omraade === 'nasjonalt' ? 'nasjonale medier' : 'lokal- og regionalmedier');
+        if (state.tema) filterInfo.push('tema: ' + (TEMA_LABEL[state.tema] || state.tema).toLowerCase());
+        var filterTekst = filterInfo.length ? ' · ' + filterInfo.join(' · ') : '';
+        el.meta.textContent = items.length + ' saker · oppdatert ' + tid + filterTekst;
+      })
+      .catch(function (err) {
+        el.liste.innerHTML =
+          '<div class="ny-feil">' +
+          '<h3>Kunne ikke hente nyheter</h3>' +
+          '<p>Feeden er midlertidig utilgjengelig. Prøv igjen om en stund.</p>' +
+          '</div>';
+        el.meta.textContent = '';
+        console.error('nyheter fetch failed', err);
+      });
+  }
+
+  // Init fra URL
+  (function initFromUrl() {
+    var params = new URLSearchParams(window.location.search);
+    var o = (params.get('omraade') || 'alle').toLowerCase();
+    var t = (params.get('tema') || '').toLowerCase();
+    if (['alle', 'nasjonalt', 'lokalt'].indexOf(o) >= 0) state.omraade = o;
+    if (TEMA_LABEL[t]) state.tema = t;
+  })();
+
+  // Event handlers
+  el.filter.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-omraade],[data-tema]');
+    if (!btn) return;
+    if (btn.hasAttribute('data-omraade')) {
+      state.omraade = btn.getAttribute('data-omraade');
+    } else {
+      state.tema = btn.getAttribute('data-tema') || '';
+    }
+    oppdaterAktiveChips();
+    oppdaterUrl();
+    last();
+  });
+
+  oppdaterAktiveChips();
+  last();
+})();
+</script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
