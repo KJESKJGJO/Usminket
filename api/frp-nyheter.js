@@ -36,7 +36,8 @@ const NASJONALE_KILDER = new Set([
   'vårt land', 'vart land', 'morgenbladet', 'dn', 'dagens næringsliv',
   'dagens naringsliv', 'e24', 'finansavisen', 'aldrimer.no',
   'faktisk.no', 'faktisk', 'khrono', 'forskning.no', 'abc nyheter',
-  'abcnyheter', 'resett', 'document', 'document.no', 'filter nyheter',
+  'abcnyheter', 'document', 'document.no', 'inyheter', 'inyheter.no',
+  'subjekt', 'subjekt.no', 'filter nyheter',
   'filternyheter', 'medier24', 'journalisten', 'kommunal rapport',
 ]);
 
@@ -47,8 +48,8 @@ const NASJONALE_DOMENER = new Set([
   'nettavisen.no', 'dagsavisen.no', 'klassekampen.no', 'nationen.no',
   'vl.no', 'morgenbladet.no', 'dn.no', 'e24.no', 'finansavisen.no',
   'aldrimer.no', 'faktisk.no', 'khrono.no', 'forskning.no',
-  'abcnyheter.no', 'resett.no', 'document.no', 'filternyheter.no',
-  'medier24.no', 'journalisten.no', 'kommunal-rapport.no',
+  'abcnyheter.no', 'document.no', 'inyheter.no', 'subjekt.no',
+  'filternyheter.no', 'medier24.no', 'journalisten.no', 'kommunal-rapport.no',
 ]);
 
 function domainOf(url) {
