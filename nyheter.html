@@ -262,7 +262,7 @@
       return;
     }
 
-    el.liste.innerHTML = items.map(function (it) {
+    el.liste.innerHTML = items.map(function (it, idx) {
       var dom = domainOf(it.link);
       var kildeTekst = it.kilde || dom || 'Ukjent kilde';
       var temaChips = (it.temaer || []).map(function (t) {
@@ -270,8 +270,11 @@
         return '<a class="ny-item__tema-chip" href="?omraade=' + encodeURIComponent(state.omraade) + '&tema=' + encodeURIComponent(t) + '">' + esc(label) + '</a>';
       }).join('');
       var ingress = lagIngress(it.sammendrag, it.tittel);
+      // Stabil ID pr sak — brukes til å knytte AI-analysen tilbake til riktig kort
+      var sakId = 's' + idx + '-' + (it.link || '').slice(-20).replace(/[^a-z0-9]/gi, '');
+      it.__id = sakId;
       return (
-        '<article class="ny-item">' +
+        '<article class="ny-item" data-sak-id="' + esc(sakId) + '">' +
           '<div class="ny-item__meta">' +
             '<span class="ny-item__omraade ny-item__omraade--' + esc(it.kildeType) + '">' + esc(omraadeEtikett(it.kildeType)) + '</span>' +
             '<span class="ny-item__kilde">' + esc(kildeTekst) + '</span>' +
@@ -282,10 +285,65 @@
             '<h2 class="ny-item__tittel">' + esc(it.tittel) + '</h2>' +
           '</a>' +
           (ingress ? '<p class="ny-item__ingress">' + esc(ingress) + '</p>' : '') +
+          '<div class="ny-item__ai" data-ai-slot="' + esc(sakId) + '" hidden>' +
+            '<span class="ny-item__ai-label">Kritisk analyse</span>' +
+            '<p class="ny-item__ai-tekst"></p>' +
+          '</div>' +
           (temaChips ? '<div class="ny-item__temaer">' + temaChips + '</div>' : '') +
         '</article>'
       );
     }).join('');
+
+    // Etter render — hent AI-oppsummeringer i bakgrunnen
+    hentAIOppsummeringer(items);
+  }
+
+  // Batch-fetch av AI-analyser. Deler opp i grupper av 10 saker per kall.
+  // Fungerer graceful hvis endpoint mangler nøkkel — vi får bare tomt svar
+  // og feeden viser den vanlige ingressen.
+  function hentAIOppsummeringer(items) {
+    if (!items || !items.length) return;
+    var BATCH = 10;
+    var batches = [];
+    for (var i = 0; i < items.length; i += BATCH) {
+      batches.push(items.slice(i, i + BATCH));
+    }
+
+    batches.forEach(function (batch) {
+      var payload = {
+        saker: batch.map(function (it) {
+          return {
+            id: it.__id,
+            tittel: it.tittel,
+            kilde: it.kilde,
+            sammendrag: it.sammendrag,
+            temaer: it.temaer || [],
+          };
+        }),
+      };
+
+      fetch('/api/ai-oppsummering', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (data) {
+          if (!data || !data.oppsummeringer) return;
+          Object.keys(data.oppsummeringer).forEach(function (id) {
+            var slot = document.querySelector('[data-ai-slot="' + CSS.escape(id) + '"]');
+            if (!slot) return;
+            var p = slot.querySelector('.ny-item__ai-tekst');
+            if (!p) return;
+            p.textContent = data.oppsummeringer[id];
+            slot.hidden = false;
+          });
+        })
+        .catch(function (err) {
+          // Stille — feeden fungerer uten AI-tekst
+          console.debug('ai-oppsummering feilet stille:', err);
+        });
+    });
   }
 
   function oppdaterAktiveChips() {
