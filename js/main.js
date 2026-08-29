@@ -10,6 +10,18 @@
   }
 })();
 
+// Mobile nav — "Politiske tema" accordion group
+(function () {
+  document.querySelectorAll('[data-nav-group-toggle]').forEach((btn) => {
+    const submenu = btn.nextElementSibling;
+    if (!submenu) return;
+    btn.addEventListener('click', () => {
+      const open = submenu.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+})();
+
 // Scroll reveal — arm hiding only if IntersectionObserver is available.
 // Otherwise leave everything visible.
 (function () {
