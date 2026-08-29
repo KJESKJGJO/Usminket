@@ -4,13 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Følg oss — Usminket politikk</title>
-  <meta name="description" content="Abonner på RSS-feeder fra regjeringen.no per tema, eller få et sammendrag på e-post når Usminket politikk oppdateres." />
+  <meta name="description" content="Abonner på RSS-feeden med alle Frp-utspill i norske medier fra Usminket politikk, eller på RSS-feeder fra regjeringen.no per tema." />
   <meta property="og:title" content="Følg oss — Usminket politikk" />
-  <meta property="og:description" content="Abonner på RSS-feeder fra regjeringen.no per tema, eller få e-postvarsel når vi oppdaterer sidene." />
+  <meta property="og:description" content="Abonner på RSS-feeden med alle Frp-utspill i norske medier fra Usminket politikk, eller på RSS-feeder fra regjeringen.no per tema." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='18' r='11' fill='%23C7302B'/%3E%3Cpath d='M14 6c1 2 4 3 5 1' stroke='%2300843A' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='11' font-weight='700' font-style='italic' fill='%23fff'%3EFrp%3C/text%3E%3C/svg%3E" />
+  <link rel="alternate" type="application/rss+xml" title="Usminket politikk — Frp-utspill i norske medier" href="https://usminket.vercel.app/api/frp-rss" />
   <link rel="alternate" type="application/rss+xml" title="Regjeringen.no — alle nyheter" href="https://www.regjeringen.no/no/rss/Rss/2581966/" />
 </head>
 <body>
@@ -72,7 +73,7 @@
   <div class="wrap">
     <div class="page-hero__eyebrow">Hold deg oppdatert</div>
     <h1 class="page-hero__title">Følg <em>Usminket politikk</em></h1>
-    <p class="page-hero__lead">Abonner på RSS-strømmene fra regjeringen.no per tema — eller få et kort e-postsammendrag når vi oppdaterer denne siden med nye analyser og lupene.</p>
+    <p class="page-hero__lead">Abonner på vår egen RSS-feed med alle Frp-utspill i norske medier, følg regjeringen.no per tema — eller få et kort e-postsammendrag når vi oppdaterer denne siden med nye analyser og lupene.</p>
   </div>
 </section>
 
@@ -138,6 +139,37 @@
         }
       })();
     </script>
+  </div>
+</section>
+
+<section class="section section--surface" id="rss-frp">
+  <div class="wrap">
+    <span class="section-eyebrow">RSS-feed · Fra oss</span>
+    <h2 class="section-title reveal">Følg <em>alle Frp-utspill</em></h2>
+    <p class="lede" style="max-width: 68ch; margin-bottom: var(--space-4, 1rem); color: var(--muted);">
+      Dette er vår egen samlefeed: alt Frp/Fremskrittspartiet-utspill og -omtale vi fanger opp i norske medier (nasjonalt og lokalt), oppdatert flere ganger i timen. Lim RSS-lenken inn i din RSS-leser for varsel hver gang det kommer en ny sak.
+    </p>
+    <div class="folg-grid">
+      <article class="folg-kort">
+        <span class="folg-kort__meta">Usminket politikk · Alle tema</span>
+        <h3 class="folg-kort__tittel">Frp-utspill i norske medier</h3>
+        <p class="folg-kort__beskr">Alt vi fanger opp om Frp — nasjonale og lokale medier, alle politiske tema — samlet i én feed.</p>
+        <a href="https://usminket.vercel.app/api/frp-rss" class="folg-kort__lenke" target="_blank" rel="noopener">Abonner på RSS →</a>
+      </article>
+      <article class="folg-kort">
+        <span class="folg-kort__meta">Usminket politikk · Nasjonalt</span>
+        <h3 class="folg-kort__tittel">Bare nasjonale medier</h3>
+        <p class="folg-kort__beskr">Samme feed, filtrert til VG, NRK, Aftenposten, Dagbladet, E24 og andre riksmedier.</p>
+        <a href="https://usminket.vercel.app/api/frp-rss?omraade=nasjonalt" class="folg-kort__lenke" target="_blank" rel="noopener">Abonner på RSS →</a>
+      </article>
+      <article class="folg-kort">
+        <span class="folg-kort__meta">Usminket politikk · Lokalt</span>
+        <h3 class="folg-kort__tittel">Bare lokale/regionale medier</h3>
+        <p class="folg-kort__beskr">Samme feed, filtrert til lokal- og regionaviser rundt om i landet.</p>
+        <a href="https://usminket.vercel.app/api/frp-rss?omraade=lokalt" class="folg-kort__lenke" target="_blank" rel="noopener">Abonner på RSS →</a>
+      </article>
+    </div>
+    <p class="folg-tema-valg__hint" style="margin-top: var(--space-4, 1rem);">Vil du ha bare ett tema, f.eks. skatt eller innvandring? Legg til <code>?tema=skatt</code> (eller velferd, arbeidsliv, klima, innvandring, justis, distrikt, samferdsel, utenriks, budsjett) på slutten av lenken.</p>
   </div>
 </section>
 
