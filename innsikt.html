@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Innsikt — nyhetsbildet visualisert | Usminket politikk</title>
+  <meta name="description" content="Visuell oversikt over Frps utspill i norske medier og regjeringens saker — tema-fordeling, aktivitet over tid, kilder og område. Oppdateres kontinuerlig." />
+  <meta property="og:title" content="Innsikt — nyhetsbildet visualisert" />
+  <meta property="og:description" content="Frps utspill og regjeringens saker, visualisert: tema-fordeling, aktivitet over tid, kilder og område." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='18' r='11' fill='%23C7302B'/%3E%3Cpath d='M14 6c1 2 4 3 5 1' stroke='%2300843A' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='11' font-weight='700' font-style='italic' fill='%23fff'%3EFrp%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="brand" aria-label="Usminket politikk — forside">
+      <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="22" r="14" fill="#C7302B"/>
+        <path d="M17 7c1 3 5 4 6 1" stroke="#00843A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <text x="20" y="27" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="13" font-weight="700" font-style="italic" fill="#fff">Frp</text>
+      </svg>
+      <span class="brand__wordmark">Usminket <em>politikk</em></span>
+    </a>
+    <button class="nav-toggle" data-nav-toggle aria-label="Åpne meny" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <nav class="nav" data-nav aria-label="Hovedmeny">
+      <a href="index.html">Forside</a>
+      <a href="index.html#tema" data-desktop-only>Tema</a>
+      <a href="budsjett.html" data-desktop-only>Analyser</a>
+      <a href="nyheter.html" class="nav-nyheter">Frp-utspill</a>
+      <a href="innsikt.html" class="nav-innsikt is-active">Innsikt</a>
+      <a href="skatt.html" data-mobile-only>Skatt</a>
+      <a href="velferd.html" data-mobile-only>Velferd</a>
+      <a href="arbeidsliv.html" data-mobile-only>Arbeidsliv</a>
+      <a href="klima.html" data-mobile-only>Klima</a>
+      <a href="innvandring.html" data-mobile-only>Innvandring</a>
+      <a href="justis.html" data-mobile-only>Justis</a>
+      <a href="distrikt.html" data-mobile-only>Distrikt</a>
+      <a href="samferdsel.html" data-mobile-only>Samferdsel</a>
+      <a href="utenriks.html" data-mobile-only>Utenriks</a>
+      <a href="budsjett.html" data-mobile-only>Budsjett</a>
+      <a href="folk-flest.html" data-mobile-only>Folk flest</a>
+      <a href="folg.html">Følg</a>
+      <a href="om.html">Om</a>
+      <a href="motoffensiv" class="nav-mo" data-mo-link aria-label="Motoffensiv (internt)">Motoffensiv</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="wrap">
+    <nav class="crumb" aria-label="Brødsmulesti">
+      <a href="index.html">Forside</a><span class="crumb__sep">/</span><span>Innsikt</span>
+    </nav>
+  </div>
+
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="page-hero__eyebrow">Nyhetsbildet · visualisert</div>
+      <h1 class="page-hero__title"><em>Innsikt</em> i nyhetsbildet</h1>
+      <p class="page-hero__lead">
+        Samme data som i <a href="nyheter.html" style="color:inherit;text-decoration:underline;">Frp-utspill</a>-feeden — men som grafer. Se hvilke tema som dominerer, hvordan aktiviteten svinger over tid, hvem som skriver mest, og hvordan Frps utspill står i forhold til regjeringens egne saker.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+
+      <div class="insight-topbar">
+        <div id="insight-meta" class="insight-updated">Laster data …</div>
+      </div>
+
+      <!-- KPI-rad -->
+      <div class="stat-row" id="insight-kpis">
+        <div class="stat"><div class="stat__num" id="kpi-total">–</div><div class="stat__label">Frp-saker · 14 dager</div></div>
+        <div class="stat"><div class="stat__num" id="kpi-perday">–</div><div class="stat__label">Saker per dag i snitt</div></div>
+        <div class="stat"><div class="stat__num" id="kpi-national">–</div><div class="stat__label">Andel i nasjonale medier</div></div>
+      </div>
+
+      <div class="insight-grid">
+
+        <!-- Tema-fordeling Frp-utspill -->
+        <div class="insight-card insight-card--wide">
+          <div class="insight-card__eyebrow">Frp-utspill</div>
+          <h2 class="insight-card__title">Hvilke tema dominerer?</h2>
+          <p class="insight-card__sub">Antall Frp-saker siste 14 dager, fordelt på tema. En sak kan telle på flere tema.</p>
+          <div class="insight-card__canvas-wrap"><canvas id="chart-tema" role="img" aria-label="Stolpediagram over antall Frp-saker per tema"></canvas></div>
+        </div>
+
+        <!-- Aktivitet over tid -->
+        <div class="insight-card insight-card--wide">
+          <div class="insight-card__eyebrow">Frp-utspill</div>
+          <h2 class="insight-card__title">Aktivitet over tid</h2>
+          <p class="insight-card__sub">Antall Frp-saker i norske medier per dag, siste 14 dager.</p>
+          <div class="insight-card__canvas-wrap"><canvas id="chart-tidslinje" role="img" aria-label="Linjediagram over antall Frp-saker per dag"></canvas></div>
+        </div>
+
+        <!-- Nasjonalt vs lokalt -->
+        <div class="insight-card">
+          <div class="insight-card__eyebrow">Frp-utspill</div>
+          <h2 class="insight-card__title">Nasjonalt vs. lokalt</h2>
+          <p class="insight-card__sub">Hvor skrives det om Frp?</p>
+          <div class="insight-card__canvas-wrap"><canvas id="chart-omraade" role="img" aria-label="Sektordiagram over nasjonale vs. lokale medier"></canvas></div>
+        </div>
+
+        <!-- Topp kilder -->
+        <div class="insight-card">
+          <div class="insight-card__eyebrow">Frp-utspill</div>
+          <h2 class="insight-card__title">Mest aktive medier</h2>
+          <p class="insight-card__sub">De 8 mediene med flest Frp-saker.</p>
+          <div class="insight-card__canvas-wrap"><canvas id="chart-kilder" role="img" aria-label="Stolpediagram over antall saker per medium"></canvas></div>
+        </div>
+
+        <!-- Kontrast: Frp-utspill vs regjeringens saker -->
+        <div class="insight-card insight-card--wide">
+          <div class="insight-card__eyebrow">Kontrast</div>
+          <h2 class="insight-card__title">Frps utspill vs. regjeringens egne saker</h2>
+          <p class="insight-card__sub">Samme tema-kategorier, to kilder: hva Frp sier i mediene (siste 14 dager) mot hva regjeringen selv publiserer på regjeringen.no (siste saker).</p>
+          <div class="insight-card__canvas-wrap"><canvas id="chart-kontrast" role="img" aria-label="Sammenligning av tema-fordeling mellom Frp-utspill og regjeringens saker"></canvas></div>
+          <div class="insight-legend">
+            <span class="insight-legend__item"><span class="insight-legend__dot" style="background:#C7302B"></span>Frp-utspill i media</span>
+            <span class="insight-legend__item"><span class="insight-legend__dot" style="background:#00843A"></span>Regjeringens saker</span>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="news__attribution" style="margin-top: var(--space-8)">
+        Kilder: aggregert via Google Nyheter og regjeringen.no. Grafene bygger på samme datasett som <a href="nyheter.html">Frp-utspill</a>-feeden og oppdateres når du laster siden på nytt (data cachet 10–15 minutter).
+      </p>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer__grid">
+    <div class="footer__brand">
+      <svg class="footer__brand__mark" viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="22" r="14" fill="#C7302B"/>
+        <path d="M17 7c1 3 5 4 6 1" stroke="#00843A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <text x="20" y="27" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="13" font-weight="700" font-style="italic" fill="#fff">Frp</text>
+      </svg>
+      <div class="brand__wordmark">Usminket <em>politikk</em></div>
+      <p class="footer__tagline">Kritisk. Saklig. Rettferdig. En redaksjonell vaktbikkje for norsk politisk debatt.</p>
+    </div>
+    <div class="footer__col">
+      <h4>Tema (1–4)</h4>
+      <ul>
+        <li><a href="skatt.html">Skatt</a></li>
+        <li><a href="velferd.html">Velferd</a></li>
+        <li><a href="arbeidsliv.html">Arbeidsliv</a></li>
+        <li><a href="klima.html">Klima</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Tema (5–9)</h4>
+      <ul>
+        <li><a href="innvandring.html">Innvandring</a></li>
+        <li><a href="justis.html">Justis</a></li>
+        <li><a href="distrikt.html">Distrikt</a></li>
+        <li><a href="samferdsel.html">Samferdsel</a></li>
+        <li><a href="utenriks.html">Utenriks</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Analyser</h4>
+      <ul>
+        <li><a href="nyheter.html">Nyheter</a></li>
+        <li><a href="innsikt.html">Innsikt</a></li>
+        <li><a href="budsjett.html">Budsjett</a></li>
+        <li><a href="om.html">Om siden</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__legal">
+    <p>Uavhengig redaksjonell vaktbikkje. Alle påstander er kildebelagt. Kritikk skal ramme politikk, ikke personer.</p>
+    <p class="footer__meta">© Usminket politikk 2026 · Innlandet, Norge</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script>
+(function () {
+  var TEMA_LABEL = {
+    skatt: 'Skatt', velferd: 'Velferd', arbeidsliv: 'Arbeidsliv',
+    klima: 'Klima', innvandring: 'Innvandring', justis: 'Justis',
+    distrikt: 'Distrikt', samferdsel: 'Samferdsel', utenriks: 'Utenriks',
+    budsjett: 'Budsjett',
+  };
+  var TEMA_ORDER = Object.keys(TEMA_LABEL);
+
+  var RED = '#C7302B';
+  var RED_SOFT = 'rgba(199, 48, 43, 0.55)';
+  var GREEN = '#00843A';
+  var GREEN_SOFT = 'rgba(0, 132, 58, 0.55)';
+  var MUTED = '#B8B4AA';
+
+  // Chart.js globale standardinnstillinger — matcher mørkt tema
+  if (window.Chart) {
+    Chart.defaults.color = MUTED;
+    Chart.defaults.font.family = "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif";
+    Chart.defaults.borderColor = 'rgba(255,255,255,0.08)';
+  }
+
+  function domainOf(url) {
+    try { return new URL(url).hostname.replace(/^www\./, ''); } catch { return ''; }
+  }
+
+  function dayKey(iso) {
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return null;
+    return d.toISOString().slice(0, 10);
+  }
+
+  function fmtDayLabel(key) {
+    var d = new Date(key + 'T00:00:00');
+    return d.toLocaleDateString('nb-NO', { day: 'numeric', month: 'short' });
+  }
+
+  function setEmpty(canvasId, wrapSelector) {
+    var el = document.getElementById(canvasId);
+    if (!el) return;
+    var wrap = el.closest('.insight-card__canvas-wrap');
+    if (wrap) wrap.innerHTML = '<div class="insight-empty">Ingen data akkurat nå — prøv å laste siden på nytt om litt.</div>';
+  }
+
+  Promise.all([
+    fetch('/api/frp-nyheter?omraade=alle&limit=60', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
+    fetch('/api/news?limit=60', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
+  ]).then(function (results) {
+    var frpData = results[0];
+    var regjData = results[1];
+    var frpItems = (frpData && frpData.items) || [];
+    var regjItems = (regjData && regjData.items) || [];
+
+    var metaEl = document.getElementById('insight-meta');
+    if (!frpItems.length && !regjItems.length) {
+      if (metaEl) metaEl.textContent = 'Kunne ikke hente data akkurat nå.';
+      ['chart-tema', 'chart-tidslinje', 'chart-omraade', 'chart-kilder', 'chart-kontrast'].forEach(function (id) { setEmpty(id); });
+      return;
+    }
+    var tid = new Date().toLocaleTimeString('nb-NO', { hour: '2-digit', minute: '2-digit' });
+    if (metaEl) metaEl.textContent = frpItems.length + ' Frp-saker og ' + regjItems.length + ' regjeringssaker · oppdatert ' + tid;
+
+    // ---------- KPI-er ----------
+    document.getElementById('kpi-total').textContent = frpItems.length;
+    var days = {};
+    frpItems.forEach(function (it) { var k = dayKey(it.pubDate); if (k) days[k] = (days[k] || 0) + 1; });
+    var dayCount = Object.keys(days).length || 1;
+    var perDay = (frpItems.length / Math.min(dayCount, 14));
+    document.getElementById('kpi-perday').textContent = perDay.toFixed(1);
+    var nasjonalt = frpItems.filter(function (it) { return it.kildeType === 'nasjonalt'; }).length;
+    var andel = frpItems.length ? Math.round((nasjonalt / frpItems.length) * 100) : 0;
+    document.getElementById('kpi-national').textContent = andel + ' %';
+
+    // ---------- Tema-fordeling (Frp-utspill) ----------
+    var temaCount = {};
+    TEMA_ORDER.forEach(function (t) { temaCount[t] = 0; });
+    frpItems.forEach(function (it) {
+      (it.temaer || []).forEach(function (t) { if (temaCount.hasOwnProperty(t)) temaCount[t]++; });
+    });
+    var temaSorted = TEMA_ORDER
+      .map(function (t) { return { tema: t, n: temaCount[t] }; })
+      .sort(function (a, b) { return b.n - a.n; })
+      .filter(function (x) { return x.n > 0; });
+
+    if (temaSorted.length && window.Chart) {
+      new Chart(document.getElementById('chart-tema'), {
+        type: 'bar',
+        data: {
+          labels: temaSorted.map(function (x) { return TEMA_LABEL[x.tema]; }),
+          datasets: [{
+            data: temaSorted.map(function (x) { return x.n; }),
+            backgroundColor: RED_SOFT,
+            borderColor: RED,
+            borderWidth: 1,
+            borderRadius: 3,
+            maxBarThickness: 28,
+          }],
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false }, tooltip: { callbacks: { label: function (c) { return c.parsed.x + ' saker'; } } } },
+          scales: {
+            x: { beginAtZero: true, ticks: { precision: 0 }, grid: { color: 'rgba(255,255,255,0.06)' } },
+            y: { grid: { display: false } },
+          },
+        },
+      });
+    } else { setEmpty('chart-tema'); }
+
+    // ---------- Aktivitet over tid ----------
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    var dayLabels = [], dayCounts = [];
+    for (var i = 13; i >= 0; i--) {
+      var d = new Date(today); d.setDate(d.getDate() - i);
+      var k = d.toISOString().slice(0, 10);
+      dayLabels.push(fmtDayLabel(k));
+      dayCounts.push(days[k] || 0);
+    }
+    if (window.Chart) {
+      new Chart(document.getElementById('chart-tidslinje'), {
+        type: 'line',
+        data: {
+          labels: dayLabels,
+          datasets: [{
+            data: dayCounts,
+            borderColor: RED,
+            backgroundColor: 'rgba(199, 48, 43, 0.15)',
+            fill: true,
+            tension: 0.35,
+            pointRadius: 3,
+            pointBackgroundColor: RED,
+          }],
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false }, tooltip: { callbacks: { label: function (c) { return c.parsed.y + ' saker'; } } } },
+          scales: {
+            y: { beginAtZero: true, ticks: { precision: 0 }, grid: { color: 'rgba(255,255,255,0.06)' } },
+            x: { grid: { display: false } },
+          },
+        },
+      });
+    }
+
+    // ---------- Nasjonalt vs lokalt ----------
+    var lokalt = frpItems.filter(function (it) { return it.kildeType === 'lokalt'; }).length;
+    var annet = frpItems.length - nasjonalt - lokalt;
+    var omrData = [nasjonalt, lokalt];
+    var omrLabels = ['Nasjonale medier', 'Lokal-/regionalmedier'];
+    var omrColors = [RED, GREEN];
+    if (annet > 0) { omrData.push(annet); omrLabels.push('Annet'); omrColors.push('#5A5750'); }
+
+    if (window.Chart && frpItems.length) {
+      new Chart(document.getElementById('chart-omraade'), {
+        type: 'doughnut',
+        data: { labels: omrLabels, datasets: [{ data: omrData, backgroundColor: omrColors, borderColor: '#131315', borderWidth: 2 }] },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 14 } } },
+          cutout: '62%',
+        },
+      });
+    } else { setEmpty('chart-omraade'); }
+
+    // ---------- Topp kilder ----------
+    var kilder = {};
+    frpItems.forEach(function (it) {
+      var navn = it.kilde || domainOf(it.link) || 'Ukjent';
+      kilder[navn] = (kilder[navn] || 0) + 1;
+    });
+    var kilderSorted = Object.keys(kilder)
+      .map(function (k) { return { navn: k, n: kilder[k] }; })
+      .sort(function (a, b) { return b.n - a.n; })
+      .slice(0, 8);
+
+    if (kilderSorted.length && window.Chart) {
+      new Chart(document.getElementById('chart-kilder'), {
+        type: 'bar',
+        data: {
+          labels: kilderSorted.map(function (x) { return x.navn; }),
+          datasets: [{
+            data: kilderSorted.map(function (x) { return x.n; }),
+            backgroundColor: RED_SOFT,
+            borderColor: RED,
+            borderWidth: 1,
+            borderRadius: 3,
+            maxBarThickness: 24,
+          }],
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false }, tooltip: { callbacks: { label: function (c) { return c.parsed.x + ' saker'; } } } },
+          scales: {
+            x: { beginAtZero: true, ticks: { precision: 0 }, grid: { color: 'rgba(255,255,255,0.06)' } },
+            y: { grid: { display: false } },
+          },
+        },
+      });
+    } else { setEmpty('chart-kilder'); }
+
+    // ---------- Kontrast: Frp-utspill vs regjeringens saker ----------
+    var regjTemaCount = {};
+    TEMA_ORDER.forEach(function (t) { regjTemaCount[t] = 0; });
+    regjItems.forEach(function (it) {
+      (it.temaer || []).forEach(function (t) { if (regjTemaCount.hasOwnProperty(t)) regjTemaCount[t]++; });
+    });
+    var kontrastTemaer = TEMA_ORDER.filter(function (t) { return temaCount[t] > 0 || regjTemaCount[t] > 0; });
+
+    if (kontrastTemaer.length && window.Chart) {
+      new Chart(document.getElementById('chart-kontrast'), {
+        type: 'bar',
+        data: {
+          labels: kontrastTemaer.map(function (t) { return TEMA_LABEL[t]; }),
+          datasets: [
+            { label: 'Frp-utspill i media', data: kontrastTemaer.map(function (t) { return temaCount[t]; }), backgroundColor: RED_SOFT, borderColor: RED, borderWidth: 1, borderRadius: 3 },
+            { label: 'Regjeringens saker', data: kontrastTemaer.map(function (t) { return regjTemaCount[t]; }), backgroundColor: GREEN_SOFT, borderColor: GREEN, borderWidth: 1, borderRadius: 3 },
+          ],
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false } },
+          scales: {
+            x: { grid: { display: false } },
+            y: { beginAtZero: true, ticks: { precision: 0 }, grid: { color: 'rgba(255,255,255,0.06)' } },
+          },
+        },
+      });
+    } else { setEmpty('chart-kontrast'); }
+
+  });
+})();
+</script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
