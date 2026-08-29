@@ -99,7 +99,8 @@
           <div class="insight-card__eyebrow">Frp-utspill</div>
           <h2 class="insight-card__title">Hvilke tema dominerer?</h2>
           <p class="insight-card__sub">Antall Frp-saker siste 14 dager, fordelt på tema. En sak kan telle på flere tema.</p>
-          <div class="insight-card__canvas-wrap"><canvas id="chart-tema" role="img" aria-label="Stolpediagram over antall Frp-saker per tema"></canvas></div>
+          <div class="insight-card__canvas-wrap is-clickable"><canvas id="chart-tema" role="img" aria-label="Stolpediagram over antall Frp-saker per tema"></canvas></div>
+          <p class="insight-card__hint">Klikk på en stolpe for å se sakene</p>
         </div>
 
         <!-- Aktivitet over tid -->
@@ -107,7 +108,8 @@
           <div class="insight-card__eyebrow">Frp-utspill</div>
           <h2 class="insight-card__title">Aktivitet over tid</h2>
           <p class="insight-card__sub">Antall Frp-saker i norske medier per dag, siste 14 dager.</p>
-          <div class="insight-card__canvas-wrap"><canvas id="chart-tidslinje" role="img" aria-label="Linjediagram over antall Frp-saker per dag"></canvas></div>
+          <div class="insight-card__canvas-wrap is-clickable"><canvas id="chart-tidslinje" role="img" aria-label="Linjediagram over antall Frp-saker per dag"></canvas></div>
+          <p class="insight-card__hint">Klikk på et punkt for å se dagens saker</p>
         </div>
 
         <!-- Nasjonalt vs lokalt -->
@@ -115,7 +117,8 @@
           <div class="insight-card__eyebrow">Frp-utspill</div>
           <h2 class="insight-card__title">Nasjonalt vs. lokalt</h2>
           <p class="insight-card__sub">Hvor skrives det om Frp?</p>
-          <div class="insight-card__canvas-wrap"><canvas id="chart-omraade" role="img" aria-label="Sektordiagram over nasjonale vs. lokale medier"></canvas></div>
+          <div class="insight-card__canvas-wrap is-clickable"><canvas id="chart-omraade" role="img" aria-label="Sektordiagram over nasjonale vs. lokale medier"></canvas></div>
+          <p class="insight-card__hint">Klikk på en del av sirkelen for å se sakene</p>
         </div>
 
         <!-- Topp kilder -->
@@ -123,7 +126,8 @@
           <div class="insight-card__eyebrow">Frp-utspill</div>
           <h2 class="insight-card__title">Mest aktive medier</h2>
           <p class="insight-card__sub">De 8 mediene med flest Frp-saker.</p>
-          <div class="insight-card__canvas-wrap"><canvas id="chart-kilder" role="img" aria-label="Stolpediagram over antall saker per medium"></canvas></div>
+          <div class="insight-card__canvas-wrap is-clickable"><canvas id="chart-kilder" role="img" aria-label="Stolpediagram over antall saker per medium"></canvas></div>
+          <p class="insight-card__hint">Klikk på en stolpe for å se sakene</p>
         </div>
 
         <!-- Kontrast: Frp-utspill vs regjeringens saker -->
@@ -131,7 +135,8 @@
           <div class="insight-card__eyebrow">Kontrast</div>
           <h2 class="insight-card__title">Frps utspill vs. regjeringens egne saker</h2>
           <p class="insight-card__sub">Samme tema-kategorier, to kilder: hva Frp sier i mediene (siste 14 dager) mot hva regjeringen selv publiserer på regjeringen.no (siste saker).</p>
-          <div class="insight-card__canvas-wrap"><canvas id="chart-kontrast" role="img" aria-label="Sammenligning av tema-fordeling mellom Frp-utspill og regjeringens saker"></canvas></div>
+          <div class="insight-card__canvas-wrap is-clickable"><canvas id="chart-kontrast" role="img" aria-label="Sammenligning av tema-fordeling mellom Frp-utspill og regjeringens saker"></canvas></div>
+          <p class="insight-card__hint">Klikk på en stolpe for å se sakene</p>
           <div class="insight-legend">
             <span class="insight-legend__item"><span class="insight-legend__dot" style="background:#C7302B"></span>Frp-utspill i media</span>
             <span class="insight-legend__item"><span class="insight-legend__dot" style="background:#00843A"></span>Regjeringens saker</span>
@@ -195,6 +200,22 @@
   </div>
 </footer>
 
+<div class="insight-modal" id="insight-modal" data-insight-modal hidden>
+  <div class="insight-modal__backdrop" data-insight-modal-close></div>
+  <div class="insight-modal__panel" role="dialog" aria-modal="true" aria-labelledby="insight-modal-title">
+    <div class="insight-modal__header">
+      <div>
+        <div class="insight-modal__eyebrow" id="insight-modal-eyebrow"></div>
+        <h3 class="insight-modal__title" id="insight-modal-title"></h3>
+      </div>
+      <button type="button" class="insight-modal__close" data-insight-modal-close aria-label="Lukk">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="insight-modal__list" id="insight-modal-list"></div>
+  </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 <script>
 (function () {
@@ -239,6 +260,63 @@
     if (!el) return;
     var wrap = el.closest('.insight-card__canvas-wrap');
     if (wrap) wrap.innerHTML = '<div class="insight-empty">Ingen data akkurat nå — prøv å laste siden på nytt om litt.</div>';
+  }
+
+  // ---------- Saksliste-modal (klikk på graf → se sakene) ----------
+  function escapeHtml(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function fmtItemDate(iso) {
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return '';
+    return d.toLocaleDateString('nb-NO', { day: 'numeric', month: 'short', year: 'numeric' });
+  }
+  function normalizeFrp(it) {
+    return { title: it.tittel, link: it.link, source: it.kilde || domainOf(it.link) || 'Ukjent', pubDate: it.pubDate, kildeType: it.kildeType };
+  }
+  function normalizeRegj(it) {
+    return { title: it.title, link: it.link, source: it.source || 'regjeringen.no', pubDate: it.pubDate, kildeType: null };
+  }
+
+  var modalEl = document.getElementById('insight-modal');
+  var modalEyebrow = document.getElementById('insight-modal-eyebrow');
+  var modalTitle = document.getElementById('insight-modal-title');
+  var modalList = document.getElementById('insight-modal-list');
+
+  function openInsightModal(eyebrow, title, normItems) {
+    if (!modalEl) return;
+    modalEyebrow.textContent = eyebrow;
+    modalTitle.textContent = title;
+    if (!normItems.length) {
+      modalList.innerHTML = '<div class="insight-modal__empty">Ingen saker funnet i dette utvalget.</div>';
+    } else {
+      var sorted = normItems.slice().sort(function (a, b) { return new Date(b.pubDate) - new Date(a.pubDate); });
+      var countLabel = sorted.length + (sorted.length === 1 ? ' sak' : ' saker');
+      modalList.innerHTML = '<div class="insight-modal__count">' + countLabel + '</div>' + sorted.map(function (it) {
+        var tagClass = it.kildeType === 'nasjonalt' ? ' insight-modal__item-tag--nasjonalt' : (it.kildeType === 'lokalt' ? ' insight-modal__item-tag--lokalt' : '');
+        var tag = it.kildeType ? '<span class="insight-modal__item-tag' + tagClass + '">' + (it.kildeType === 'nasjonalt' ? 'Nasjonalt' : 'Lokalt') + '</span>' : '';
+        return '<a class="insight-modal__item" href="' + escapeHtml(it.link || '#') + '" target="_blank" rel="noopener noreferrer">' +
+          '<div class="insight-modal__item-title">' + escapeHtml(it.title || 'Uten titel') + '</div>' +
+          '<div class="insight-modal__item-meta">' + tag + '<span>' + escapeHtml(it.source) + '</span><span>' + fmtItemDate(it.pubDate) + '</span></div>' +
+        '</a>';
+      }).join('');
+    }
+    modalEl.hidden = false;
+    document.body.classList.add('insight-modal-open');
+  }
+  function closeInsightModal() {
+    if (!modalEl) return;
+    modalEl.hidden = true;
+    document.body.classList.remove('insight-modal-open');
+  }
+  document.querySelectorAll('[data-insight-modal-close]').forEach(function (el) {
+    el.addEventListener('click', closeInsightModal);
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeInsightModal(); });
+  function pointerHover(evt, elements) {
+    if (evt && evt.native && evt.native.target) evt.native.target.style.cursor = elements.length ? 'pointer' : '';
   }
 
   Promise.all([
@@ -298,6 +376,14 @@
         options: {
           indexAxis: 'y',
           responsive: true, maintainAspectRatio: false,
+          onHover: pointerHover,
+          onClick: function (evt, elements) {
+            if (!elements.length) return;
+            var entry = temaSorted[elements[0].index];
+            if (!entry) return;
+            var items = frpItems.filter(function (it) { return (it.temaer || []).indexOf(entry.tema) !== -1; }).map(normalizeFrp);
+            openInsightModal('Frp-utspill · ' + TEMA_LABEL[entry.tema], TEMA_LABEL[entry.tema], items);
+          },
           plugins: { legend: { display: false }, tooltip: { callbacks: { label: function (c) { return c.parsed.x + ' saker'; } } } },
           scales: {
             x: { beginAtZero: true, ticks: { precision: 0 }, grid: { color: 'rgba(255,255,255,0.06)' } },
@@ -309,12 +395,13 @@
 
     // ---------- Aktivitet over tid ----------
     var today = new Date(); today.setHours(0, 0, 0, 0);
-    var dayLabels = [], dayCounts = [];
+    var dayLabels = [], dayCounts = [], dayKeysArr = [];
     for (var i = 13; i >= 0; i--) {
       var d = new Date(today); d.setDate(d.getDate() - i);
       var k = d.toISOString().slice(0, 10);
       dayLabels.push(fmtDayLabel(k));
       dayCounts.push(days[k] || 0);
+      dayKeysArr.push(k);
     }
     if (window.Chart) {
       new Chart(document.getElementById('chart-tidslinje'), {
@@ -333,6 +420,14 @@
         },
         options: {
           responsive: true, maintainAspectRatio: false,
+          onHover: pointerHover,
+          onClick: function (evt, elements) {
+            if (!elements.length) return;
+            var key = dayKeysArr[elements[0].index];
+            if (!key) return;
+            var items = frpItems.filter(function (it) { return dayKey(it.pubDate) === key; }).map(normalizeFrp);
+            openInsightModal('Frp-utspill · ' + fmtDayLabel(key), 'Saker ' + fmtDayLabel(key), items);
+          },
           plugins: { legend: { display: false }, tooltip: { callbacks: { label: function (c) { return c.parsed.y + ' saker'; } } } },
           scales: {
             y: { beginAtZero: true, ticks: { precision: 0 }, grid: { color: 'rgba(255,255,255,0.06)' } },
@@ -356,6 +451,16 @@
         data: { labels: omrLabels, datasets: [{ data: omrData, backgroundColor: omrColors, borderColor: '#131315', borderWidth: 2 }] },
         options: {
           responsive: true, maintainAspectRatio: false,
+          onHover: pointerHover,
+          onClick: function (evt, elements) {
+            if (!elements.length) return;
+            var idx = elements[0].index;
+            var items, label;
+            if (idx === 0) { items = frpItems.filter(function (it) { return it.kildeType === 'nasjonalt'; }); label = 'Nasjonale medier'; }
+            else if (idx === 1) { items = frpItems.filter(function (it) { return it.kildeType === 'lokalt'; }); label = 'Lokal-/regionalmedier'; }
+            else { items = frpItems.filter(function (it) { return it.kildeType !== 'nasjonalt' && it.kildeType !== 'lokalt'; }); label = 'Annet'; }
+            openInsightModal('Frp-utspill · ' + label, label, items.map(normalizeFrp));
+          },
           plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 14 } } },
           cutout: '62%',
         },
@@ -390,6 +495,14 @@
         options: {
           indexAxis: 'y',
           responsive: true, maintainAspectRatio: false,
+          onHover: pointerHover,
+          onClick: function (evt, elements) {
+            if (!elements.length) return;
+            var entry = kilderSorted[elements[0].index];
+            if (!entry) return;
+            var items = frpItems.filter(function (it) { return (it.kilde || domainOf(it.link) || 'Ukjent') === entry.navn; }).map(normalizeFrp);
+            openInsightModal('Frp-utspill · ' + entry.navn, entry.navn, items);
+          },
           plugins: { legend: { display: false }, tooltip: { callbacks: { label: function (c) { return c.parsed.x + ' saker'; } } } },
           scales: {
             x: { beginAtZero: true, ticks: { precision: 0 }, grid: { color: 'rgba(255,255,255,0.06)' } },
@@ -419,6 +532,20 @@
         },
         options: {
           responsive: true, maintainAspectRatio: false,
+          onHover: pointerHover,
+          onClick: function (evt, elements) {
+            if (!elements.length) return;
+            var el = elements[0];
+            var tema = kontrastTemaer[el.index];
+            if (!tema) return;
+            if (el.datasetIndex === 0) {
+              var frpMatch = frpItems.filter(function (it) { return (it.temaer || []).indexOf(tema) !== -1; }).map(normalizeFrp);
+              openInsightModal('Frp-utspill · ' + TEMA_LABEL[tema], 'Frp-utspill om ' + TEMA_LABEL[tema], frpMatch);
+            } else {
+              var regjMatch = regjItems.filter(function (it) { return (it.temaer || []).indexOf(tema) !== -1; }).map(normalizeRegj);
+              openInsightModal('Regjeringens saker · ' + TEMA_LABEL[tema], 'Regjeringens saker om ' + TEMA_LABEL[tema], regjMatch);
+            }
+          },
           plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false } },
           scales: {
             x: { grid: { display: false } },
