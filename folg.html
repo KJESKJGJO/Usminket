@@ -147,29 +147,47 @@
     <span class="section-eyebrow">RSS-feed · Fra oss</span>
     <h2 class="section-title reveal">Følg <em>alle Frp-utspill</em></h2>
     <p class="lede" style="max-width: 68ch; margin-bottom: var(--space-4, 1rem); color: var(--muted);">
-      Dette er vår egen samlefeed: alt Frp/Fremskrittspartiet-utspill og -omtale vi fanger opp i norske medier (nasjonalt og lokalt), oppdatert flere ganger i timen. Lim RSS-lenken inn i din RSS-leser for varsel hver gang det kommer en ny sak.
+      Dette er vår egen samlefeed: alt Frp/Fremskrittspartiet-utspill og -omtale vi fanger opp i norske medier (nasjonalt og lokalt), oppdatert flere ganger i timen. Se sakene direkte på siden, eller kopier RSS-lenken inn i din RSS-leser for varsel hver gang det kommer en ny sak.
     </p>
     <div class="folg-grid">
       <article class="folg-kort">
         <span class="folg-kort__meta">Usminket politikk · Alle tema</span>
         <h3 class="folg-kort__tittel">Frp-utspill i norske medier</h3>
         <p class="folg-kort__beskr">Alt vi fanger opp om Frp — nasjonale og lokale medier, alle politiske tema — samlet i én feed.</p>
-        <a href="https://usminket.vercel.app/api/frp-rss" class="folg-kort__lenke" target="_blank" rel="noopener">Abonner på RSS →</a>
+        <div class="folg-kort__actions">
+          <a href="nyheter.html" class="folg-kort__lenke">Se sakene →</a>
+          <button type="button" class="folg-kort__kopier" data-copy-rss="https://usminket.vercel.app/api/frp-rss" title="Kopier RSS-lenken">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span data-copy-label>Kopier RSS-lenke</span>
+          </button>
+        </div>
       </article>
       <article class="folg-kort">
         <span class="folg-kort__meta">Usminket politikk · Nasjonalt</span>
         <h3 class="folg-kort__tittel">Bare nasjonale medier</h3>
         <p class="folg-kort__beskr">Samme feed, filtrert til VG, NRK, Aftenposten, Dagbladet, E24 og andre riksmedier.</p>
-        <a href="https://usminket.vercel.app/api/frp-rss?omraade=nasjonalt" class="folg-kort__lenke" target="_blank" rel="noopener">Abonner på RSS →</a>
+        <div class="folg-kort__actions">
+          <a href="nyheter.html?omraade=nasjonalt" class="folg-kort__lenke">Se sakene →</a>
+          <button type="button" class="folg-kort__kopier" data-copy-rss="https://usminket.vercel.app/api/frp-rss?omraade=nasjonalt" title="Kopier RSS-lenken">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span data-copy-label>Kopier RSS-lenke</span>
+          </button>
+        </div>
       </article>
       <article class="folg-kort">
         <span class="folg-kort__meta">Usminket politikk · Lokalt</span>
         <h3 class="folg-kort__tittel">Bare lokale/regionale medier</h3>
         <p class="folg-kort__beskr">Samme feed, filtrert til lokal- og regionaviser rundt om i landet.</p>
-        <a href="https://usminket.vercel.app/api/frp-rss?omraade=lokalt" class="folg-kort__lenke" target="_blank" rel="noopener">Abonner på RSS →</a>
+        <div class="folg-kort__actions">
+          <a href="nyheter.html?omraade=lokalt" class="folg-kort__lenke">Se sakene →</a>
+          <button type="button" class="folg-kort__kopier" data-copy-rss="https://usminket.vercel.app/api/frp-rss?omraade=lokalt" title="Kopier RSS-lenken">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span data-copy-label>Kopier RSS-lenke</span>
+          </button>
+        </div>
       </article>
     </div>
-    <p class="folg-tema-valg__hint" style="margin-top: var(--space-4, 1rem);">Vil du ha bare ett tema, f.eks. skatt eller innvandring? Legg til <code>?tema=skatt</code> (eller velferd, arbeidsliv, klima, innvandring, justis, distrikt, samferdsel, utenriks, budsjett) på slutten av lenken.</p>
+    <p class="folg-tema-valg__hint" style="margin-top: var(--space-4, 1rem);">Vil du ha bare ett tema, f.eks. skatt eller innvandring? Legg til <code>?tema=skatt</code> (eller velferd, arbeidsliv, klima, innvandring, justis, distrikt, samferdsel, utenriks, budsjett) på lenken du kopierer, eller på <a href="nyheter.html">Frp-utspill-siden</a>.</p>
   </div>
 </section>
 

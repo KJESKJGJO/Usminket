@@ -84,10 +84,16 @@
 
       <div class="insight-topbar">
         <div id="insight-meta" class="insight-updated">Laster data …</div>
-        <a class="insight-rss-btn" href="https://usminket.vercel.app/api/frp-rss" target="_blank" rel="noopener" title="Abonner på alle Frp-utspill via RSS">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
-          RSS — alle Frp-utspill
-        </a>
+        <div class="insight-rss-group">
+          <a class="insight-rss-btn" href="nyheter.html" title="Se alle Frp-utspill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+            <span data-copy-label>RSS — alle Frp-utspill</span>
+          </a>
+          <button type="button" class="insight-rss-copy" data-copy-rss="https://usminket.vercel.app/api/frp-rss" title="Kopier RSS-lenken for din RSS-leser">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span data-copy-label>Kopier lenke</span>
+          </button>
+        </div>
       </div>
 
       <!-- KPI-rad -->

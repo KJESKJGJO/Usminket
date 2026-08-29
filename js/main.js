@@ -480,3 +480,53 @@
       });
   });
 })();
+
+// ============================================================
+// Kopier RSS-lenke til utklippstavlen
+// Mange nettlesere (spesielt Facebooks innebygde nettleser-app)
+// vet ikke hvordan de skal vise rå XML og feiler med "finner ikke
+// siden". Derfor lar vi brukeren kopiere feed-adressen i stedet for
+// å navigere direkte til den — adressen limes så inn i en RSS-leser.
+(function () {
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-copy-rss]');
+    if (!btn) return;
+    e.preventDefault();
+    var url = btn.getAttribute('data-copy-rss');
+    var visLabel = function (tekst, midlertidig) {
+      var span = btn.querySelector('[data-copy-label]');
+      if (!span) return;
+      if (midlertidig && !span.dataset.orig) span.dataset.orig = span.textContent;
+      span.textContent = tekst;
+      if (midlertidig) {
+        setTimeout(function () {
+          span.textContent = span.dataset.orig || tekst;
+        }, 2200);
+      }
+    };
+    function fallbackCopy(text) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
+      document.body.removeChild(ta);
+      return ok;
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(function () {
+        visLabel('Lenke kopiert ✓', true);
+      }).catch(function () {
+        var ok = fallbackCopy(url);
+        visLabel(ok ? 'Lenke kopiert ✓' : 'Kunne ikke kopiere', true);
+      });
+    } else {
+      var ok = fallbackCopy(url);
+      visLabel(ok ? 'Lenke kopiert ✓' : 'Kunne ikke kopiere', true);
+    }
+  });
+})();
